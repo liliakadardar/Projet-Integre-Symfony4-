@@ -1,0 +1,199 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block body %}
+
+    <!--start section-->
+    <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img14">
+
+        <div class="nicdark_filter greydark">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space100"></div>
+                <div class="nicdark_space100"></div>
+
+                <div class="nicdark_space70"></div> <!--for header 1-->
+
+                <div class="grid grid_6">
+                    <h1 class="white subtitle">Nos événements</h1>
+                </div>
+                <div class="grid grid_6 nicdark_displaynone_responsive">
+                    <div class="nicdark_space5"></div>
+                    <h4 class="white right subtitle">Evenements<span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span><a class="white" href="{{ path('evenement_new') }}">Ajouter</a></h4>
+                </div>
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space40"></div>
+
+            </div>
+            <!--end nicdark_container-->
+
+        </div>
+
+    </section>
+    <!--end section-->
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+
+            <div class="nicdark_space50"></div>
+
+
+            <div class="grid grid_12 nicdark_bg_white nicdark_sizing nicdark_border_grey   nicdark_relative">
+
+                <a href="#" class="nicdark_displaynone_iphoneland nicdark_displaynone_iphonepotr nicdark_btn_icon nicdark_bg_green  extrabig _left white nicdark_absolute"><i class="icon-search"></i></a>
+
+                <div class="nicdark_textevidence">
+                    <div class="nicdark_margin1820 nicdark_marginleft100 nicdark_marginleft20_iphoneland nicdark_marginleft20_iphonepotr">
+                        <div class="nicdark_focus nicdark_width_percentage25">
+
+                            <div class="nicdark_focus nicdark_relative nicdark_icon_text">
+                                <input class="nicdark_bg_white nicdark_border_grey   grey medium subtitle" type="text" placeholder="NAME" value="" size="200">
+                            </div>
+
+                        </div>
+                        <div class="nicdark_focus nicdark_width_percentage25">
+                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+
+                                <div class="nicdark_focus nicdark_relative nicdark_icon_select">
+                                    <select class="nicdark_bg_white nicdark_border_grey    grey medium subtitle">
+                                        <option>SELECT</option>
+                                        <option>ONE</option>
+                                        <option>TWO</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="nicdark_focus nicdark_width_percentage25">
+                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+
+                                <div class="nicdark_focus nicdark_relative nicdark_icon_date">
+                                    <input class="nicdark_bg_white nicdark_border_grey    grey medium subtitle nicdark_calendar" placeholder="DATE" type="text" value="">
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="nicdark_focus nicdark_width_percentage25">
+                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                <input class="nicdark_btn fullwidth nicdark_bg_green medium   white" type="submit" value="SEARCH"  >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="nicdark_space10"></div>
+
+            {% for evenement in evenements %}
+            <div class="grid grid_3">
+
+                <div class="nicdark_archive1 nicdark_border_grey nicdark_sizing nicdark_bg_white  ">
+
+                    <img alt="" src="{{ asset('uploads/event_pictures/' ~ evenement.imageE) }}">
+
+                    <div class="nicdark_textevidence nicdark_bg_greydark center">
+                        <h4 class="white nicdark_margin20">{{ evenement.nomE }}</h4>
+                    </div>
+
+                    <div class="nicdark_textevidence nicdark_bg_red center">
+                        <h5 class="white nicdark_margin10">{{ evenement.dateDeb|date("m/d/Y") }}</h5>
+                    </div>
+
+                    <div class="nicdark_textevidence center">
+                        <div class="nicdark_margin20">
+                            <p>{{ evenement.description }}</p>
+                            <div class="nicdark_space20"></div>
+                            <div class="row">
+                                <div class="col col-md-3">
+                            <a href="{{ path('evenement_showsingle', {'id': evenement.id}) }}" class="nicdark_press white nicdark_btn nicdark_bg_red medium  ">MORE INFO</a>
+                                </div>
+                                <div class="col col-md-3">
+                                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="nicdark_press white nicdark_btn nicdark_bg_red medium  ">Modifier</a>
+                                </div>
+                        </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+    <!--start section-->
+    {#  <div class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space40"></div>
+
+            <div class="grid grid_6 nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+                <a class="nicdark_disable_floatright_iphoneland nicdark_disable_floatright_iphonepotr nicdark_btn nicdark_bg_green medium right   white nicdark_press"><i class="icon-angle-left"></i>&nbsp;&nbsp;&nbsp;PREV</a>
+            </div>
+            <div class="grid grid_6 nicdark_aligncenter_iphoneland nicdark_aligncenter_iphonepotr">
+                <a class=" nicdark_btn nicdark_bg_green medium   white nicdark_press">NEXT&nbsp;&nbsp;&nbsp;<i class="icon-angle-right"></i></a>
+            </div>
+
+            <div class="nicdark_space50"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </div>#}
+
+{% endblock %}
+
+{# <h1>Evenement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_e</th>
+                <th>Date_deb</th>
+                <th>Date_fin</th>
+                <th>Image_e</th>
+                <th>Description</th>
+                <th>Prix_e</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.nomE }}</td>
+                <td>{{ evenement.dateDeb ? evenement.dateDeb|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.dateFin ? evenement.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.imageE }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.prixE }}</td>
+                <td>
+                    <a href="{{ path('evenement_show', {'id': evenement.id}) }}">show</a>
+                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('evenement_new') }}">Create new</a>  #}

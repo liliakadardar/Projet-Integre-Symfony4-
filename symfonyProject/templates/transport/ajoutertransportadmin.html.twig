@@ -1,0 +1,76 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+
+{% block body %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="page-titles">
+            <h4>Transport</h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                <li class="breadcrumb-item active"><a href="javascript:void(0)">Ajouter  un transport</a></li>
+            </ol>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-header">
+
+                </div>
+                <div class="card-body">
+                    <div class="basic-form">
+                        {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                        <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                            <div class="row">
+
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">lieu_depart</label>
+                                        {{ form_errors(form.lieu_depart) }}
+                                        {{ form_widget(form.lieu_depart, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                                    </div>
+                                </div>
+
+
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">lieu_arrivee</label>
+                                        {{ form_errors(form.lieu_arrivee) }}
+                                        {{ form_widget(form.lieu_arrivee, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu arrivee'}})}}
+                                    </div>
+
+
+
+                     </div>
+
+
+
+
+
+
+
+
+
+
+
+                            </div>
+
+
+
+
+                        </div>
+
+                    </div>
+
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+{% endblock %}

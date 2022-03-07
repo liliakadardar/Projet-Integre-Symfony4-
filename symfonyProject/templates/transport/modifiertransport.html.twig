@@ -1,0 +1,165 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Ajouter une nouvelle categorie {% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+
+            <div class="page-titles">
+                <h4>Transport</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Modifier un transport</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                            <div id="wizard_Service" class="tab-pane" role="tabpanel">
+
+                                <div class="row">
+
+                                    <div class="col-lg-6 mb-2">
+
+
+                                        <div class="form-group">
+                                            <label class="text-label">LieuDepart</label>
+                                            {{ form_widget(form.lieu_depart,{'attr':{'class': 'form-control','placeholder':'LieuDepart' }}) }}
+                                            {{ form_errors(form.lieu_depart) }}
+                                        </div>
+
+
+
+                                          <div class="form-group">
+                                            <label class="text-label"> LieuArrivee</label>
+                                            {{ form_widget(form.lieu_arrivee,{'attr':{'class': 'form-control','placeholder':' LieuArrivee' }}) }}
+                                            {{ form_errors(form.lieu_arrivee) }}
+                                         </div>
+
+
+
+
+                                        <div class="form-group">
+                                            <label class="text-label"> DateDep</label>
+                                            {{ form_widget(form.date_dep,{'attr':{'class': 'form-control','placeholder':'DateDep' }}) }}
+                                            {{ form_errors(form.date_dep) }}
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="text-label">DateArrivee</label>
+                                            {{ form_widget(form.date_arrivee,{'attr':{'class': 'form-control','placeholder':' DateArrivee' }}) }}
+                                            {{ form_errors(form.date_arrivee) }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="text-label">DateRetour</label>
+                                            {{ form_widget(form.date_retour,{'attr':{'class': 'form-control','placeholder':'DateRetour' }}) }}
+                                            {{ form_errors(form.date_retour) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-label"> HeureArrivee</label>
+                                            {{ form_widget(form.heure_arrivee,{'attr':{'class': 'form-control','placeholder':' HeureArrivee' }}) }}
+                                            {{ form_errors(form.heure_arrivee) }}
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="text-label">HeureDepart</label>
+                                            {{ form_widget(form.heure_depart,{'attr':{'class': 'form-control','placeholder':' HeureDepart' }}) }}
+                                            {{ form_errors(form.heure_depart) }}
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="text-label"> HeureRetour</label>
+                                            {{ form_widget(form.heure_retour,{'attr':{'class': 'form-control','placeholder':'HeureRetour' }}) }}
+                                            {{ form_errors(form.heure_retour) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-label"> NbPlace</label>
+                                            {{ form_widget(form.nb_place,{'attr':{'class': 'form-control','placeholder':' NbPlace' }}) }}
+                                            {{ form_errors(form.nb_place) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-label">NbBagage</label>
+                                            {{ form_widget(form.nb_bagage,{'attr':{'class': 'form-control','placeholder':'NbBagage' }}) }}
+                                            {{ form_errors(form.nb_bagage) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-label"> PrixT</label>
+                                            {{ form_widget(form.prix_t,{'attr':{'class': 'form-control','placeholder':' PrixT' }}) }}
+                                            {{ form_errors(form.prix_t) }}
+                                        </div>
+
+                                        <div class="form-group">
+                                           {#  <label class="text-label">Type de transport</label>
+                                            {{ form_widget(form.disponibilite,{'attr':{'class': 'form-control','placeholder':'Disponibilite' }}) }}
+                                            {{ form_errors(form.disponibilite) }}#}
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="text-label">categorieT</label>
+                                            {{ form_widget(form.categorieT,{'attr':{'class': 'form-control','placeholder':'categorieT' }}) }}
+                                            {{ form_errors(form.categorieT) }}
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+
+
+                      {# <button type="submit" class="btn mr-2 btn-primary">Ajouter</button>#}
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,149 @@
+{% extends 'base-back.html.twig' %}
+{% block body %}
+
+
+
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Profile</h4>
+
+            </div>
+            <!-- row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="profile card card-body px-3 pt-3 pb-0">
+                        <div class="profile-head">
+                           <!-- <div class="photo-content">
+                                <div class="cover-photo"></div>
+                            </div>-->
+                            <div class="profile-info">
+                                <div class="profile-photo">
+                                    <img src="{{ asset('uploads/image/' ~ app.user.image) }}" class="img-fluid rounded-circle" alt="">
+                                </div>
+                                <div class="profile-details">
+                                    <div class="profile-name px-3 pt-2">
+                                        <h4 class="text-primary mb-0">{{ app.user.nom }}</h4>
+                                        <p>ADMIN</p>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="profile-tab">
+                                <div class="custom-tab-1">
+                                    <ul class="nav nav-tabs">
+
+                                        <li class="nav-item"><a href="#about-me" data-toggle="tab" class="nav-link active show">Profil</a>
+                                        </li>
+                                        <li class="nav-item"><a href="#profile-settings" data-toggle="tab" class="nav-link">Parametre</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+
+                                        <div id="about-me" class="tab-pane fade active show">
+                                          <br>
+                                            <div class="profile-personal-info">
+                                                <h4 class="text-primary mb-4">Données personnelles</h4>
+                                                <div class="row mb-2">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Nom <span class="pull-right">:</span>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-9"><span>{{ app.user.nom }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Prénom <span class="pull-right">:</span>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-9"><span>{{ app.user.prenom }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Email <span class="pull-right">:</span></h5>
+                                                    </div>
+                                                    <div class="col-9"><span>{{ app.user.email }}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb-2">
+                                                    <div class="col-3">
+                                                        <h5 class="f-w-500">Téléphone <span class="pull-right">:</span>
+                                                        </h5>
+                                                    </div>
+                                                    <div class="col-9"><span>{{ app.user.numTel }}</span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div id="profile-settings" class="tab-pane fade">
+                                            <div class="pt-3">
+                                                <div class="settings-form">
+                                                    <h4 class="text-primary">Modification Profil</h4>
+
+                                                    <form name="utilisateur" method="Get">
+                                                        <div id="utilisateur">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="utilisateur_nom" class="required">Nom</label>
+                                                                    <input type="textType" id="utilisateur_nom" class=" form-control " name="utilisateur[nom]" required="required"  value="{{ utilisateur.nom }}">
+                                                                </div>
+                                                                <div class="form-group col-md-6">
+                                                                    <label for="utilisateur_prenom" class="required">Prénom</label>
+                                                                    <input type="textType" id="utilisateur_prenom" name="utilisateur[prenom]"class="form-control" required="required"  value="{{ utilisateur.prenom }}">
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="utilisateur_email" class="required">Email</label>
+                                                                <input type="email" id="utilisateur_email" name="utilisateur[email]" class=" form-control"   required="required" value="{{ utilisateur.email }}">
+
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="utilisateur_numTel" class="required">Téléphone</label>
+                                                                <input type="TelType" id="utilisateur_numTel" name="utilisateur[numTel]"  class="form-control"   required="required" value="{{ utilisateur.numTel }}">
+                                                            </div>
+
+                                                            <button class="btn btn-primary"><a href="">Valider</a></button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Modal -->
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

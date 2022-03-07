@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from welly.dexignzone.com/xhtml/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 12 Feb 2022 12:36:49 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <!-- Favicon icon -->
+    {% block css %}
+        <!-- Datatable -->
+        <link href="{{ asset('/BACK/vendor/datatables/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('/BACK/images/favicon.png') }}">
+        <link href="{{ asset('/BACK/vendor/jqvmap/css/jqvmap.min.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('/BACK/vendor/chartist/css/chartist.min.css') }}">
+        <link href="{{ asset('/BACK/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/BACK/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('/BACK/css/style.css') }}" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+
+        <style>
+
+
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            ul {
+                list-style: none;
+            }
+
+            button {
+                border: none;
+                background: transparent;
+                outline: none;
+                cursor: pointer;
+            }
+
+            button:active {
+                color: black;
+            }
+
+            a {
+                text-decoration: none;
+                color: black;
+            }
+
+            body {
+                font: normal 16px/1.5 'poppins', sans-serif;
+            }
+
+
+            /* .top-banner
+            –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+            .top-banner {
+                display: flex;
+                width: calc(100% - 150px);
+                height: 100vh;
+                transform: translateX(150px);
+
+            }
+
+            .top-banner-overlay {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 350px;
+                padding: 20px;
+                transition: transform .7s;
+                color: white;
+                background: rgba(0, 0, 0, .7);
+            }
+
+            .top-banner-overlay.is-moved {
+                transform: translateX(350px);
+            }
+
+            .top-banner-overlay.is-moved::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: 100%;
+                width: 20px;
+                box-shadow: 0 0 10px black;
+            }
+
+            .top-banner-overlay p {
+                font-size: 1rem;
+                margin-top: 10px;
+            }
+
+            .top-nav li + li {
+                margin-top: 7px;
+            }
+
+
+            /* .menu-wrapper
+            –––––––––––––––––––––––––––––––––––––––––––––––––– */
+            .top-nav .menu-wrapper {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                width: 300px;
+                padding: 20px;
+                transform: translateX(-200px);
+                transition: transform .7s;
+                background: #ace5c1;
+            }
+
+            .top-nav .menu-wrapper.is-opened {
+                transform: translateX(150px);
+            }
+
+            .top-nav .menu-wrapper .menu {
+                opacity: 0;
+                transition: opacity .4s;
+
+            }
+
+            .top-nav .menu-wrapper.is-opened .menu {
+                opacity: 1;
+                transition-delay: .6s;
+
+            }
+
+            .top-nav .menu-wrapper .menu a {
+                font-size: 1.2rem;
+
+            }
+
+            .top-nav .menu-wrapper .sub-menu {
+                padding: 10px 0 0 7px;
+            }
+
+            .top-nav .menu-wrapper .menu-close {
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                font-size: 1.6rem;
+                color: #FFFFFF;
+            }
+
+
+            /* .fixed menu
+            –––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+            .top-nav .fixed-menu {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                width: 150px;
+                padding: 20px;
+                background: #76b28e;
+
+
+            }
+
+            .top-nav .fixed-menu .menu-open {
+                font-size: 1.8rem;
+                text-align: left;
+                margin: 30px 0 auto;
+                width: 28px;
+                color:#FFFFFF;
+            }
+
+
+
+
+
+
+
+
+
+
+        </style>
+
+
+    {% endblock %}
+</head>
+<body>
+
+<section class="top-banner">
+
+    <div class="container-fluid">
+        <div class="page-titles read-content-body">
+            <h1>BOITE MESSAGERIE</h1>
+
+        </div>
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="email-left-box generic-width px-0 mb-5">
+                            <div class="p-0">
+                                <a href="{{ path('send') }}" class="btn btn-primary btn-block">Envoyer un message</a>
+                            </div>
+                            <div class="mail-list mt-4">
+                                <a href="{{ path('received') }}" class="list-group-item active">
+                                    <i class="fa fa-inbox font-18 align-middle mr-2"></i> Boite de réception
+
+                                </a>
+                                <a href="{{ path('sent')}}" class="list-group-item">
+                                    <i class="fa fa-paper-plane font-18 align-middle mr-2"></i>Envoyé
+                                </a>
+                                <a href="javascript:void()" class="list-group-item">
+                                    <i class="fa fa-star font-18 align-middle mr-2"></i>Important
+                                    <span class="badge badge-danger badge-sm text-white float-right">47</span>
+                                </a>
+
+                                <a href="javascript:void()" class="list-group-item">
+                                    <i class="fa fa-trash font-18 align-middle mr-2"></i>Trash
+                                </a>
+                            </div>
+
+                        </div>
+                      {% block body %}
+
+                        {%endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<nav class="top-nav">
+    <div class="menu-wrapper">
+        <ul class="menu">
+            <li>
+                <a href="{{ path('accueil') }}">Accueil</a>
+            </li>
+
+            <li>
+                <a href="{{ path('utilisateur_show',{'id':app.user.id}) }}">Profil</a>
+            </li>
+
+            <li>
+                <a href="">contact</a>
+            </li>
+        </ul>
+        <button class="menu-close" aria-label="close menu">✕</button>
+    </div>
+    <div class="fixed-menu">
+        <h2 style="color: #FFFFFF">GO CAMP</h2>
+        <button class="menu-open" aria-label="open menu">☰</button>
+        <ul >
+
+            <li>
+                <a href="{{ path('app_logout') }}"><h6 style="color: #FFFFFF">Déconnexion</h6></a>
+            </li>
+
+        </ul>
+    </div>
+</nav>
+
+
+
+
+
+
+
+{% block js %}
+    <script src="/BACK/vendor/global/global.min.js"></script>
+    <script src="/BACK/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/BACK/vendor/chart.js/Chart.bundle.min.js"></script>
+    <script src="/BACK/js/custom.min.js"></script>
+    <script src="/BACK/js/deznav-init.js"></script>
+    <script src="/BACK/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+    <script src="/BACK/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Chart piety plugin files -->
+    <script src="/BACK/vendor/peity/jquery.peity.min.js"></script>
+
+    <!-- Apex Chart -->
+    <script src="/BACK/vendor/apexchart/apexchart.js"></script>
+
+    <!-- Dashboard 1 -->
+    <script src="/BACK/js/dashboard/dashboard-1.js"></script>
+    <script>
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                inline: true,
+            });
+        });
+    </script>
+
+
+    <script>
+        const menuOpen = document.querySelector(".top-nav .menu-open");
+        const menuClose = document.querySelector(".top-nav .menu-close");
+        const menuWrapper = document.querySelector(".top-nav .menu-wrapper");
+        const topBannerOverlay = document.querySelector(".top-banner-overlay");
+
+        function toggleMenu() {
+            menuOpen.addEventListener("click", () => {
+                menuWrapper.classList.add("is-opened");
+                topBannerOverlay.classList.add("is-moved");
+            });
+
+            menuClose.addEventListener("click", () => {
+                menuWrapper.classList.remove("is-opened");
+                topBannerOverlay.classList.remove("is-moved");
+            });
+        }
+
+        toggleMenu();
+
+
+
+    </script>
+{% endblock %}
+</body>
+</html>
+

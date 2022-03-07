@@ -1,0 +1,115 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!--start section-->
+    <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img5">
+
+        <div class="nicdark_filter greydark">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space100"></div>
+                <div class="nicdark_space100"></div>
+
+                <div class="nicdark_space70"></div> <!--for header 1-->
+
+                <div class="grid grid_6">
+                    <h1 class="white subtitle">Liste Des Transports</h1>
+                </div>
+                <div class="grid grid_6 nicdark_displaynone_responsive">
+                    <div class="nicdark_space5"></div>
+                   {#  <h4 class="white right subtitle"><a class="white" href="#">Accueil</a> <span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span> Categorie</h4>#}
+                </div>
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space40"></div>
+
+            </div>
+            <!--end nicdark_container-->
+
+        </div>
+
+    </section>
+    <!--end section-->
+
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+
+        <!--end form-->
+
+
+
+
+        {% for i in transport %}
+            <div class="grid grid_4">
+
+                <!--start accomodation-->
+                <div class="nicdark_focus">
+
+
+                    <!--title e descr-->
+                    <center>
+                        <div class="nicdark_margin020 nicdark_border_bottom_none nicdark_padding20 nicdark_border_grey nicdark_relative nicdark_sizing nicdark_bg_white nicdark_margintop55_negative">
+                            <h2>     Transport </h2>
+                            <div class="nicdark_space20"></div>
+
+
+                            <p> Lieu de départ :{{ i.lieuDepart }}</p>
+                            <p> Lieu d'arrivée :{{ i.lieuArrivee }}</p>
+                            <p> date départ :{{ i.dateDep ? i.dateDep|date('Y-m-d') : '' }}</p>
+                            <p>heure de départ :{{ i.heureDepart ? i.heureDepart|date('H:i:s') : '' }}</p>
+
+                            <p> date arrivée :{{ i.dateArrivee ? i.dateArrivee|date('Y-m-d') : '' }}</p>
+                            <p>heure d'arrivée :{{ i.heureArrivee ? i.heureArrivee|date('H:i:s') : '' }}</p>
+
+
+
+
+
+                            <p> date retour :{{ i.dateRetour ? i.dateRetour|date('Y-m-d') : '' }}</p>
+
+                            <p> heure de retour :{{ i.heureRetour ? i.heureRetour|date('H:i:s') : '' }}</p>
+                            <p> Nombres de places :{{ i.nbPlace }}</p>
+                            <p>Nomres de bagages :{{ i.nbBagage }}</p>
+                            <div class="nicdark_space5"></div>
+                            <h3> Prix :{{ i.prixT }}</h3>
+                            <div class="nicdark_space5"></div>
+                            <h3> CategorieT :{{ i.categorieT }}</h3>
+
+
+
+
+
+
+                        </div>
+                    </center>
+
+                    <div class="nicdark_paddingtop0 nicdark_focus nicdark_sizing nicdark_padding20  nicdark_relative nicdark_sizing nicdark_bg_white ">
+                        <div class="nicdark_border_top_none nicdark_focus nicdark_padding20 nicdark_sizing nicdark_border_grey ">
+                            <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+                              {#   <a href="#" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_bg_blue left  medium white">VIEW ALL</a>#}
+                            </div>
+                            {# <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+                            <a href="#" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_border_grey nicdark_bg_white right medium grey">From 200 $</a>
+                        </div> #}
+                        </div>
+                    </div>
+                    <!--end btns-->
+
+                </div>
+                <!--end accomodation-->
+
+            </div>
+        {% endfor %}
+
+
+
+        </div>
+        <!--end container-->
+
+    </section>
+
+{% endblock %}

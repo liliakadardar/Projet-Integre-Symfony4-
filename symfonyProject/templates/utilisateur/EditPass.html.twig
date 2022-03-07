@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block css %}
+    {{ parent() }}
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #c3a38a
+        }
+
+        a {
+            text-decoration: none !important;
+        }
+
+        .add-experience {
+            background: #bd7880;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+
+
+        .bouton {
+            background: #6188a4;
+            color: #fff;
+
+        }
+    </style>
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
+{% block body %}
+    <div class="nicdark_space50"></div>
+    <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                    <div class="col-xs4 nicdark_textevidence nicdark_bg_blue">
+                        <h2 class="white nicdark_margin20">Profil </h2>
+                    </div>
+                    <img class="rounded-circle mt-5" width="150px" alt="image de profil"
+                         src="{{ asset('uploads/image/' ~ app.user.image) }}">
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="grix xs4 container">
+                    {% for message in app.flashes('message') %}
+                        <div class="col-xs4">
+                            <div class="p-3 my-2 rounded-2 success">{{ message }}</div>
+                        </div>
+                    {% endfor %}
+
+                    <form method="post">
+
+                        <div class="p-3 py-5">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+
+                                <h4 class="text-right">Réinitialisation du mot de passe</h4>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label class="labels">Nouveau mot de passe</label>
+                            <input type="password" id="pass" name="pass" class="nicdark_focus nicdark_relative">
+                        </div>
+                        <div class=class="mb-3"><label class="labels">Confirmer le mot de pass</label>
+                            <input type="password" id="pass2" name="pass2" class="nicdark_focus nicdark_relative">
+                        </div>
+                <div class="mb-3">
+
+                    <button class="btn bouton">Confirmer</button>
+                </div>
+
+                    </form>
+                    <div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="nicdark_archive1  ">
+                        <div class="d-flex justify-content-between align-items-center experience">
+                            <span class="border px-3 p-1 add-experience white nicdark_margin20"><i
+                                        class="fa fa-plus icon-cog-2"></i>&nbsp;PARAMÉTRES</span>
+                        </div>
+
+                        <ul class="nicdark_list ">
+
+                            <li>
+                                <div class="nicdark_margin20">
+                                    <div class="nicdark_activity">
+                                        <p><i class="icon-angle-right"></i><a class="grey nicdark"
+                                                                              href="{{ path('utilisateur_show' ,{'id':app.user.id}) }}">Profil</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nicdark_margin20">
+                                    <div class="nicdark_activity">
+                                        <p><i class="icon-angle-right"></i><a class="grey nicdark"
+                                                                              href="{{ path('utilisateur_edit',{'id':app.user.id}) }}">Modifier
+                                                compte</a></p>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div class="nicdark_margin20">
+                                    <div class="nicdark_activity">
+                                        <p><i class="icon-angle-right"></i><a class="grey nicdark"
+                                                                              href="{{ path('users_pass_modifier',{'id':app.user.id}) }}">Réinitialisation
+                                                mot de passe</a></p>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="nicdark_margin20">
+                                    <div class="nicdark_activity">
+                                        <form method="post" action="{{ path('utilisateur_delete', {'id': app.user.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ app.user.id) }}">
+                                            <button  class="btn bouton" >Supprimer votre compte</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </li>
+
+
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

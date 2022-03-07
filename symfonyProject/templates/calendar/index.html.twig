@@ -1,0 +1,121 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendar{% endblock %}
+{% block css %}
+    <!--START CSS-->
+    <link rel="stylesheet" href="/FRONT/css/nicdark_style.css"> <!--style-->
+    <link rel="stylesheet" href="/FRONT/css/nicdark_responsive.css"> <!--nicdark_responsive-->
+
+    <!--revslider-->
+    <link rel="stylesheet" href="/FRONT/css/revslider/settings.css"> <!--revslider-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
+    <style>
+        body {
+            --fc-button-text-color: grey;
+        }
+    </style>
+{% endblock %}
+
+
+{% block stylesheets %}
+    <style>
+        #calendrier{
+            width: 1100px;
+            margin: auto;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+    <!--start section-->
+    <!--end section-->
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+
+            <div class="nicdark_space50"></div>
+            <div id="calendrier" style=" height: 600px; width: 1200px; "></div>
+            <div class="nicdark_space10"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+{% endblock %}
+{% block JS %}
+    <script src="/FRONT/js/main/jquery.min.js"></script> <!--Jquery-->
+    <script src="/FRONT/js/main/jquery-ui.js"></script> <!--Jquery UI-->
+    <script src="/FRONT/js/main/excanvas.js"></script> <!--canvas need for ie-->
+
+    <!--plugins-->
+    <!--<script src="/FRONT/FRONT/js/plugins/revslider/jquery.themepunch.tools.min.js"></script> revslider-->
+    <!--<script src="/FRONT/FRONT/js/plugins/revslider/jquery.themepunch.revolution.min.js"></script> revslider-->
+
+    <!--menu-->
+    <script src="/FRONT/js/plugins/menu/superfish.min.js"></script> <!--superfish-->
+    <script src="/FRONT/js/plugins/menu/tinynav.min.js"></script> <!--tinynav-->
+
+    <!--other-->
+    <script src="/FRONT/js/plugins/isotope/isotope.pkgd.min.js"></script> <!--isotope-->
+    <script src="/FRONT/js/plugins/mpopup/jquery.magnific-popup.min.js"></script> <!--mpopup-->
+    <script src="/FRONT/js/plugins/scroolto/scroolto.js"></script> <!--Scrool To-->
+    <script src="/FRONT/js/plugins/nicescrool/jquery.nicescroll.min.js"></script> <!--Nice Scroll-->
+    <script src="/FRONT/js/plugins/inview/jquery.inview.min.js"></script> <!--inview-->
+    <script src="/FRONT/js/plugins/parallax/jquery.parallax-1.1.3.js"></script> <!--parallax-->
+    <script src="/FRONT/js/plugins/countto/jquery.countTo.js"></script> <!--jquery.countTo-->
+    <script src="/FRONT/js/plugins/countdown/jquery.countdown.js"></script> <!--countdown-->
+
+    <!--settings-->
+    <script src="/FRONT/js/settings.js"></script> <!--settings-->
+    <script src="/FRONT/js/cost-calculator.js"></script> <!--settings-->
+    <!--start preloader-->
+    <script type="text/javascript">
+
+        jQuery(window).load(function() {
+            jQuery(".nicdark_preloader").delay(1000).fadeOut("slow");
+
+            //START PARALLAX SECTIONS
+            $('#nicdark_parallax_booking').parallax("50%", 0.3);
+            $('#nicdark_parallaxx_img2').parallax("50%", 0.3);
+            $('#nicdark_parallax_2_btns').parallax("50%", 0.3);
+            $('#nicdark_parallax_countdown').parallax("50%", 0.3);
+            $('#nicdark_parallax_counter').parallax("50%", 0.3);
+            //END PARALLAX SECTIONS
+
+        })
+
+    </script>
+    <!--end preloader-->
+
+
+    <script>
+        var data = {{ data|raw }};
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: data,
+                editable: false,
+                eventResizableFromStart: true
+            })
+
+            calendar.render()
+        }
+
+    </script>
+
+{% endblock %}

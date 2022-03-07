@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="nicdark_section">
+        <div class="nicdark_container nicdark_clearfix">
+            <div class="nicdark_space40"></div>
+            <div class="grid grid_12">
+                <h1 class="center">Transport</h1>
+                <div class="nicdark_space20"></div>
+                <h3 class="subtitle center"></h3>
+                <div class="nicdark_space20"></div>
+                <div class="nicdark_divider center big"><span class="nicdark_bg_grey2"></span></div>
+                <div class="nicdark_space10"></div>
+            </div>
+
+            <div class="grid grid_8">
+                <div class="nicdark_archive1 nicdark_bg_white nicdark_border_grey nicdark_sizing   ">
+                    <div class="nicdark_textevidence nicdark_bg_blue">
+                        <h4 class="white nicdark_margin20">Ajouter un transport</h4>
+                    </div>
+
+                    {{ form_start(form) }}
+                    <div class="nicdark_margin20">
+                        <div class="nicdark_focus nicdark_relative nicdark_icon_text">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Lieu départ :</h4>
+                            </div>
+
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.lieu_depart) }}
+                            {{ form_widget(form.lieu_depart, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Lieu arrivé :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.lieu_arrivee) }}
+                            {{ form_widget(form.lieu_arrivee, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Date départ :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.date_dep) }}
+                            {{ form_widget(form.date_dep, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Date arrivé :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.date_arrivee) }}
+                            {{ form_widget(form.date_arrivee, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Date retour :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.date_retour) }}
+                            {{ form_widget(form.date_retour, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Heure départ :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.heure_depart) }}
+                            {{ form_widget(form.heure_depart, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Heure arrivé :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.heure_arrivee) }}
+                            {{ form_widget(form.heure_arrivee, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Heure retour :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.heure_retour) }}
+                            {{ form_widget(form.heure_retour, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu départ'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Nombre de place :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.nb_place) }}
+                            {{ form_widget(form.nb_place, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Nombre de place'}})}}
+                        </div>
+                        <div class="nicdark_space20"></div>
+
+
+
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Nombre de bagages :</h4>
+                            </div>
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.nb_bagage) }}
+                            {{ form_widget(form.nb_bagage, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Nombre de bagages'}})}}
+                        </div>
+
+
+                        <div class="nicdark_space20"></div>
+
+
+
+
+                        <div class="nicdark_focus nicdark_relative">
+
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>Prix :</h4>
+                            </div>
+
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.prix_t) }}
+                            {{ form_widget(form.prix_t, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Prix'}})}}
+                        </div>
+
+
+
+                        <div class="nicdark_space20"></div>
+
+
+
+
+                        <div class="nicdark_focus nicdark_relative">
+                            <div class="nicdark_activity nicdark_marginleft100 nicdark_disable_marginleft_ipadpotr">
+                                <h4>disponibilite :</h4>
+                            </div>
+
+                            <div class="nicdark_space20"></div>
+                            {{ form_errors(form.disponibilite) }}
+                            {{ form_widget(form.disponibilite, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Disponibilité'}})}}
+                        </div>
+
+
+
+
+
+                        <div class="nicdark_space20"></div>
+                        <button type="submit" class="nicdark_mpopup_ajax nicdark_btn nicdark_bg_blue medium nicdark_outline  white nicdark_press" >Ajouter</button>
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+{% endblock %}
+
+{# <title>New Transport</title>
+
+{% block body %}
+    <h1>Create new Transport</h1>
+
+    {{ include('transport/_form.html.twig') }}
+
+    <a href="{{ path('transport_index') }}">back to list</a>
+{% endblock %} #}

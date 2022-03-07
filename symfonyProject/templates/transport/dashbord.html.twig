@@ -1,0 +1,75 @@
+{% extends 'base-back.html.twig' %}
+
+
+
+
+{% block body %}
+
+
+
+
+<h1>  Nombres de transport par chaque Catégorie</h1>
+    <div class="content-body">
+<section>
+
+    <div class="container">
+        <canvas id="myPieChart" width="400" height="100"></canvas>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+
+
+
+
+    <script>
+        let categories = document.querySelector("#myPieChart")
+        let categGraph = new Chart(categories, {
+            type: "pie",
+            data: {
+                labels: {{ categorieNom|raw }},
+                datasets: [{
+                    label: "Nombres de chambres par chaque hotel",
+                    data: {{ transportcount|raw }},
+                    backgroundColor: ["green","blue","red","black","yellow","brown","pink","white","gold","purple","silver","grey"]
+                }  ]
+            }
+        })
+
+    </script>
+
+
+
+
+
+
+
+
+
+
+</section>
+
+
+
+    </div>
+
+
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Calendar {% endblock %}
+{% block css %}
+    <link rel="icon" type="image/png" sizes="16x16" href="/BACK/images/favicon.png">
+    <link href="/BACK/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/BACK/vendor/chartist/css/chartist.min.css">
+    <link href="/BACK/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+    <link href="/BACK/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+    <link href="/BACK/css/style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
+{% endblock %}
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Evenement</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Ajouter  un événement</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+
+                    </div>
+                    <div class="card-body">
+
+                        <div id="calendrier" style=" height: 600px; width: 950px; "></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="/BACK/vendor/global/global.min.js"></script>
+    <script src="/BACK/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+    <script src="/BACK/vendor/chart.js/Chart.bundle.min.js"></script>
+    <script src="/BACK/js/custom.min.js"></script>
+    <script src="/BACK/js/deznav-init.js"></script>
+    <script src="/BACK/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+    <script src="/BACK/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- Chart piety plugin files -->
+    <script src="/BACK/vendor/peity/jquery.peity.min.js"></script>
+
+    <!-- Apex Chart -->
+    <script src="/BACK/vendor/apexchart/apexchart.js"></script>
+
+    <!-- Dashboard 1 -->
+    <script src="/BACK/js/dashboard/dashboard-1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.0/main.min.js" integrity="sha256-DBxkGZLxKsLKhz054qUpBqtotG00r9AELGpSigJujLg=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $('#datetimepicker1').datetimepicker({
+                inline: true,
+            });
+        });
+    </script>
+    <script>
+        var data = {{ data|raw }};
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendrier")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek'
+                },
+                events: data,
+                editable: false,
+                eventResizableFromStart: true
+            })
+
+            calendar.render()
+        }
+
+    </script>
+{% endblock %}

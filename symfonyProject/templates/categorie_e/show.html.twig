@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<title>CategorieE</title>
+
+{% block body %}
+    <h1>CategorieE</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorie_e.id }}</td>
+            </tr>
+            <tr>
+                <th>NomCat_e</th>
+                <td>{{ categorie_e.nomCatE }}</td>
+            </tr>
+            <tr>
+                <th>Image_e</th>
+                <td>{{ categorie_e.imageE }}</td>
+            </tr>
+            <tr>
+                <th>Desciption</th>
+                <td>{{ categorie_e.desciption }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_e_index') }}">back to list</a>
+
+    <a href="{{ path('categorie_e_edit', {'id': categorie_e.id}) }}">edit</a>
+
+    {{ include('categorie_e/_delete_form.html.twig') }}
+{% endblock %}

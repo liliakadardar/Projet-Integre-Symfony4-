@@ -1,0 +1,514 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Evenement index{% endblock %}
+
+{% block body %}
+
+
+
+
+
+    <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img5">
+
+        <div class="nicdark_filter greydark">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space100"></div>
+                <div class="nicdark_space100"></div>
+
+                <div class="nicdark_space70"></div> <!--for header 1-->
+
+                <div class="grid grid_6">
+                    <h1 class="white subtitle">{{ evenement.nomE }}</h1>
+                </div>
+                <div class="grid grid_6 nicdark_displaynone_responsive">
+                    <div class="nicdark_space5"></div>
+                    <h4 class="white right subtitle"><a class="white" href="index.html">Home</a> <span
+                                class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span> <a class="white"
+                                                                                                     href="/evenement/">Evenement</a>
+                        <span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span> Single Event</h4>
+                </div>
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space40"></div>
+
+            </div>
+            <!--end nicdark_container-->
+
+        </div>
+
+    </section>
+
+
+
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space10"></div>
+
+
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space50"></div>
+
+            <div class="grid grid_6">
+                <p>
+                    <span class="white nicdark_dropcap nicdark_bg_red  ">{{ evenement.description|first }}</span>{{ evenement.description[1:] }}
+                </p>
+                <div class="nicdark_space10"></div>
+                <div class="nicdark_focus center">
+                    <div class="nicdark_margin10">
+                        <a title="Voir calendier" href="/calendar"
+                           class="nicdark_tooltip nicdark_btn nicdark_bg_red medium   white nicdark_margin10"><i
+                                    class="icon-calendar"></i>&nbsp;&nbsp;&nbsp;Calendrier</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="grid grid_6">
+                <!--start nicdark_accordion-->
+
+                <!--end nicdark_accordion-->
+            </div>
+
+            <div class="nicdark_space40"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+
+
+    <!--start section-->
+    <section id="nicdark_parallax_countdown" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img6"
+             style="background-position: 50% 101px;">
+
+        <div class="nicdark_filter">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space50"></div>
+
+                <div class="nicdark_countdown" id="nourCountdown">
+
+                    <div class="grid grid_3   ">
+                        <div class="nicdark_textevidence center"><h1 class="subtitle white extrasize"
+                                                                     id="eventDaysTime">000</h1>
+                            <div class="nicdark_space20"></div>
+                            <a class="nicdark_btn nicdark_bg_blue small   white">DAYS</a>
+                            <div class="nicdark_space5"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid_3   ">
+                        <div class="nicdark_textevidence center"><h1 class="subtitle white extrasize"
+                                                                     id="eventHoursTime">00</h1>
+                            <div class="nicdark_space20"></div>
+                            <a class="nicdark_btn nicdark_bg_yellow small   white">HOURS</a>
+                            <div class="nicdark_space5"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid_3   ">
+                        <div class="nicdark_textevidence center"><h1 class="subtitle white extrasize"
+                                                                     id="eventMinutesTime">00</h1>
+                            <div class="nicdark_space20"></div>
+                            <a class="nicdark_btn nicdark_bg_green small   white">MINUTES</a>
+                            <div class="nicdark_space5"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid_3   ">
+                        <div class="nicdark_textevidence center"><h1 class="subtitle white extrasize"
+                                                                     id="eventSecondsTime">00</h1>
+                            <div class="nicdark_space20"></div>
+                            <a class="nicdark_btn nicdark_bg_violet small   white">SECONDS</a>
+                            <div class="nicdark_space5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space50"></div>
+
+            </div>
+            <!--end nicdark_container-->
+
+        </div>
+
+    </section>
+    <!--end section-->
+
+
+
+
+
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space50"></div>
+
+            <div class="grid grid_12">
+                <h1 class="subtitle greydark">GALLERY</h1>
+                <div class="nicdark_space20"></div>
+                <h3 class="subtitle grey">Look What Happened Last Year</h3>
+                <div class="nicdark_space20"></div>
+                <div class="nicdark_divider left big"><span class="nicdark_bg_grey2 "></span></div>
+            </div>
+
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+
+
+
+    <!--start section-->
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space10"></div>
+
+            <div class="center">
+                <!--start section-->
+                <section class="nicdark_section">
+
+                    <div class="tp-banner-container">
+                        <div id="nicdark_slide2" class="tp-banner">
+
+                            <ul>
+
+                                <!--start second-->
+                                <li data-transition="fade" data-slotamount="7" data-masterspeed="1000"
+                                    data-saveperformance="on" data-title="LESSON">
+                                    <img src="/FRONT/img/slide/img6.jpg" alt=""
+                                         data-lazyload="/uploads/event_pictures/{{ evenement.imageE }}" data-bgposition="center center"
+                                         data-bgfit="cover" data-bgrepeat="no-repeat">
+                                </li>
+                                <!--end second-->
+
+
+
+                            </ul>
+
+                        </div>
+                    </div>
+
+                </section>
+                <!--end section-->
+            </div>
+
+            <div class="nicdark_space20"></div>
+
+            <div class="grid grid_12 nicdark_bg_grey nicdark_relative nicdark_border_grey   nicdark_relative">
+
+                <a href="#"
+                   class="nicdark_displaynone_iphoneland nicdark_displaynone_iphonepotr nicdark_btn_icon nicdark_bg_blue  extrabig  white nicdark_absolute"><i
+                            class="icon-mail-squared"></i></a>
+
+                <div class="nicdark_textevidence">
+                    <div class="nicdark_margin1820 nicdark_marginleft100 nicdark_marginleft20_iphoneland nicdark_marginleft20_iphonepotr">
+                        <div class="nicdark_focus nicdark_width_percentage80">
+
+                            <div class="nicdark_focus nicdark_relative nicdark_icon_mail">
+                                <input class="nicdark_bg_white nicdark_border_grey  grey medium subtitle" type="text"
+                                       placeholder="LEAVE YOUR @MAIL" value="" size="200">
+                            </div>
+
+                        </div>
+                        <div class="nicdark_focus nicdark_width_percentage20">
+                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                <input class="nicdark_btn fullwidth nicdark_bg_blue medium   white" type="submit"
+                                       value="SEND">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="nicdark_space50"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </section>
+    <!--end section-->
+
+
+
+
+    <!--end-->
+
+    <!--<div class="nicdark_space3 nicdark_bg_gradient"></div>-->
+
+    <!--start section-->
+    <div class="nicdark_section nicdark_bg_greydark">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space30"></div>
+
+            <div class="grid grid_3 nomargin percentage">
+
+                <div class="nicdark_space20"></div>
+
+                <div class="nicdark_margin10">
+                    <h4 class="white">OUR CAMPING</h4>
+                    <div class="nicdark_space20"></div>
+                    <div class="nicdark_divider left small"><span class="nicdark_bg_white "></span></div>
+                    <div class="nicdark_space20"></div>
+                    <p class="white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas scelerisque velit
+                        ac elit accumsan, at aliquet leo sodales, in convallis sodales libero, eu imperdiet.</p>
+                    <div class="nicdark_space20"></div>
+                    <div class="nicdark_divider left small"><span class="nicdark_bg_white "></span></div>
+                    <div class="nicdark_space20"></div>
+                    <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_green small   white"><i
+                                class="icon-mail nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_green small   white"><i
+                                class="icon-tree nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                    <a href="contact-1.html" class="nicdark_btn_icon nicdark_bg_green small   white"><i
+                                class="icon-phone nicdark_rotate"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+                </div>
+            </div>
+
+            <div class="grid grid_3 nomargin percentage">
+
+                <div class="nicdark_space30"></div>
+
+                <div class="nicdark_marginleft10">
+                    <h4 class="white">OUR TAGS</h4>
+                    <div class="nicdark_space20"></div>
+                    <div class="nicdark_divider left small"><span class="nicdark_bg_white "></span></div>
+                </div>
+                <div class="nicdark_space10"></div>
+
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Camping</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Tend</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Kids</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Family</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Cottage</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Dogs</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Swim</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Camp</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Caravan</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Camper</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Kids</a>
+                <a href="#" class="nicdark_btn nicdark_bg_greydark2 small   white subtitle nicdark_margin10">Friends</a>
+
+            </div>
+
+            <div class="grid grid_3 nomargin percentage">
+
+                <div class="nicdark_space20"></div>
+
+                <div class="nicdark_margin10">
+                    <h4 class="white">OUR CAMPING IMAGES</h4>
+                    <div class="nicdark_space20"></div>
+                    <div class="nicdark_divider left small"><span class="nicdark_bg_white "></span></div>
+                </div>
+
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img1.jpg">
+                    </div>
+                </div>
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img2.jpg">
+                    </div>
+                </div>
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img3.jpg">
+                    </div>
+                </div>
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img4.jpg">
+                    </div>
+                </div>
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img5.jpg">
+                    </div>
+                </div>
+
+                <div class="grid nomargin grid_4 percentage">
+                    <div class="nicdark_margin10">
+                        <img alt="" class=" nicdark_opacity nicdark_focus" src="/FRONT/img/footer/img6.jpg">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="grid grid_3 nomargin percentage">
+
+                <div class="nicdark_space20"></div>
+
+                <div class="nicdark_margin10">
+                    <h4 class="white">CONTACT US</h4>
+                    <div class="nicdark_space20"></div>
+                    <div class="nicdark_divider left small"><span class="nicdark_bg_white "></span></div>
+                    <div class="nicdark_space20"></div>
+
+
+                    <input class="nicdark_bg_greydark2   white small subtitle" type="text" value="" placeholder="EMAIL">
+                    <div class="nicdark_space20"></div>
+                    <textarea rows="3" class="nicdark_bg_greydark2   white small subtitle"
+                              placeholder="MESSAGE"></textarea>
+                    <div class="nicdark_space20"></div>
+                    <!--<input class="nicdark_btn nicdark_bg_green small   white nicdark_press" type="submit" value="SEND">-->
+                    <a href="submit-message.html"
+                       class="nicdark_mpopup_ajax nicdark_btn nicdark_bg_green small nicdark_outline  white nicdark_press">SEND</a>
+                </div>
+            </div>
+
+            <div class="nicdark_space50"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </div>
+    <!--end section-->
+
+
+{% endblock %}
+
+
+{% block JS %}
+    <script src="/FRONT/js/main/jquery.min.js"></script> <!--Jquery-->
+    <script src="/FRONT/js/main/jquery-ui.js"></script> <!--Jquery UI-->
+    <script src="/FRONT/js/main/excanvas.js"></script> <!--canvas need for ie-->
+
+    <!--plugins-->
+    <script src="/FRONT/js/plugins/revslider/jquery.themepunch.tools.min.js"></script> <!--revslider-->
+    <script src="/FRONT/js/plugins/revslider/jquery.themepunch.revolution.min.js"></script> <!--revslider-->
+
+    <!--menu-->
+    <script src="/FRONT/js/plugins/menu/superfish.min.js"></script> <!--superfish-->
+    <script src="/FRONT/js/plugins/menu/tinynav.min.js"></script> <!--tinynav-->
+
+    <!--other-->
+    <script src="/FRONT/js/plugins/isotope/isotope.pkgd.min.js"></script> <!--isotope-->
+    <script src="/FRONT/js/plugins/mpopup/jquery.magnific-popup.min.js"></script> <!--mpopup-->
+    <script src="/FRONT/js/plugins/scroolto/scroolto.js"></script> <!--Scrool To-->
+    <script src="/FRONT/js/plugins/nicescrool/jquery.nicescroll.min.js"></script> <!--Nice Scroll-->
+    <script src="/FRONT/js/plugins/inview/jquery.inview.min.js"></script> <!--inview-->
+    <script src="/FRONT/js/plugins/parallax/jquery.parallax-1.1.3.js"></script> <!--parallax-->
+    <script src="/FRONT/js/plugins/countto/jquery.countTo.js"></script> <!--jquery.countTo-->
+    <script src="/FRONT/js/plugins/countdown/jquery.countdown.js"></script> <!--countdown-->
+
+    <!--settings-->
+    <script src="/FRONT/js/settings.js"></script> <!--settings-->
+    <script src="/FRONT/js/cost-calculator.js"></script> <!--settings-->
+    <!--start preloader-->
+    <script type="text/javascript">
+
+        jQuery(window).load(function () {
+            jQuery(".nicdark_preloader").delay(1000).fadeOut("slow");
+
+            //START PARALLAX SECTIONS
+            $('#nicdark_parallax_booking').parallax("50%", 0.3);
+            $('#nicdark_parallaxx_img2').parallax("50%", 0.3);
+            $('#nicdark_parallax_2_btns').parallax("50%", 0.3);
+            $('#nicdark_parallax_countdown').parallax("50%", 0.3);
+            $('#nicdark_parallax_counter').parallax("50%", 0.3);
+            //END PARALLAX SECTIONS
+
+
+        })
+
+    </script>
+    <!--end preloader-->
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+
+            //START SLIDE
+            jQuery('#nicdark_slide1').show().revolution(
+                {
+                    startheight: 650,
+                });
+            //END SLIDE
+
+
+            //START SLIDE
+            jQuery('#nicdark_slide2').show().revolution(
+                {
+                    startheight: 650,
+                    hideTimerBar: "on",
+                    navigationStyle: "preview1",
+                    spinner: "spinner1",
+                });
+            //END SLIDE
+        });
+    </script>
+    <script>
+        var countDownDate = new Date("{{ evenement.datedeb|date }}").getTime();
+        var daysObj = $("#eventDaysTime");
+        var HoursObj = $("#eventHoursTime");
+        var MinutesObj = $("#eventMinutesTime");
+        var SecondsObj = $("#eventSecondsTime");
+        var myfunc = setInterval(function () {
+            var now = new Date().getTime();
+            var timeleft = countDownDate - now;
+
+            var days = Math.floor(timeleft / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((timeleft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((timeleft % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((timeleft % (1000 * 60)) / 1000);
+            daysObj.text(days);
+            HoursObj.text(hours);
+            MinutesObj.text(minutes);
+            SecondsObj.text(seconds);
+
+
+            if (timeleft < 0) {
+                clearInterval(myfunc);
+                $("#nourCountdown").html('<h1 class="subtitle white extrasize center">IT STARTED!!</h1>');
+                /*HoursObj.text("00");
+                MinutesObj.text("00");
+                SecondsObj.text("00");*/
+            }
+        }, 1000);
+    </script>
+
+{% endblock %}

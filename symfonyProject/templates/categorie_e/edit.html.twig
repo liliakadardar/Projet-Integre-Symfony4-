@@ -1,0 +1,70 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Modifier une catégorie {% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Catégories</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Modifier une catégorie</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                            <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label class="text-label">Nom</label>
+                                                {{ form_widget(form.nomCat_e,{'attr':{ 'class':'form-control input-default' ,'placeholder':'Nom'}}) }}
+                                                {{ form_errors(form.nomCat_e) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label">Description</label>
+                                                {{ form_widget(form.desciption,{'attr':{'class':'form-control input-default', 'placeholder':'Description'}}) }}
+                                                {{ form_errors(form.desciption) }}
+                                            </div>
+                                            <div class="form-group">
+                                                {{ form_widget(form.image_e,{'attr':{'class': 'form-control input-default' }}) }}
+                                                {{ form_errors(form.image_e) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn mr-2 btn-primary" value="Modifier">
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+{# <!DOCTYPE html>
+
+<title>Edit CategorieE</title>
+
+{% block body %}
+    <h1>Edit CategorieE</h1>
+
+    {{ include('categorie_e/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('categorie_e_index') }}">back to list</a>
+
+    {{ include('categorie_e/_delete_form.html.twig') }}
+{% endblock %} #}

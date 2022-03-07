@@ -1,0 +1,119 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}catégorie{% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>La liste des catégories</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="{{ path("categorie_e_new") }}">Ajouter une nouvelle
+                            catégorie</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-responsive-sm">
+                                <thead>
+                                <tr>
+                                    <th class="text-center">Image</th>
+                                    <th class="text-center">Nom</th>
+                                    <th class="text-center">Description</th>
+                                    <th class="text-center">évenements</th>
+                                    <th class="text-center">Modifier</th>
+                                    <th class="text-center">Supprimer</th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for categorie in categories %}
+                                    <tr>
+                                    <tr>
+                                        <td class="text-center">
+                                            <div class="d-flex align-items-center">
+                                                <img src="{{ asset('uploads/category_event_pictures/' ~ categorie.imageE) }}"
+                                                     alt="" style="width: 50px; height: 50px;" class="rounded-lg mr-2">
+                                            </div>
+                                        </td>
+                                        <td class="text-center">{{ categorie.nomCatE }}</td>
+                                        <td class="text-center">{{ categorie.desciption }}</td>
+                                        <td class="text-center"><a type="button"
+                                               href="{{ path('events_cat', {'id': categorie.id}) }}"
+                                               class="btn btn-rounded btn-outline-warning">Events</a></td>
+                                        <td class="text-center"><a type="button"
+                                                                   href="{{ path('categorie_e_edit', {'id': categorie.id}) }}"
+                                                                   class="btn btn-rounded btn-outline-warning">Modifier</a>
+                                        </td>
+
+                                        <td class="text-center">
+                                            {# <a type="button" href="{{ path('evenement_delete_back', {'id': evenement.id}) }}" class="btn btn-rounded btn-outline-danger">Supprimer</a> #}
+                                            <form method="post"
+                                                  action="{{ path('categorie_e_delete', {'id': categorie.id}) }}"
+                                                  onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                <input type="hidden" name="_token"
+                                                       value="{{ csrf_token('delete' ~ categorie.id) }}">
+                                                <button class="btn btn-rounded btn-outline-danger">Supprimer</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+
+
+
+
+{# <!DOCTYPE html>
+
+<title>CategorieE index</title>
+
+{% block body %}
+    <h1>CategorieE index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>NomCat_e</th>
+                <th>Image_e</th>
+                <th>Desciption</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categorie_e in categorie_es %}
+            <tr>
+                <td>{{ categorie_e.id }}</td>
+                <td>{{ categorie_e.nomCatE }}</td>
+                <td>{{ categorie_e.imageE }}</td>
+                <td>{{ categorie_e.desciption }}</td>
+                <td>
+                    <a href="{{ path('categorie_e_show', {'id': categorie_e.id}) }}">show</a>
+                    <a href="{{ path('categorie_e_edit', {'id': categorie_e.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_e_new') }}">Create new</a>
+{% endblock %} #}

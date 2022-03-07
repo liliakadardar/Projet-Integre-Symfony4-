@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Transport index{% endblock %}
+
+{% block body %}
+    <h1>Transport index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lieu_depart</th>
+                <th>Lieu_arrivee</th>
+                <th>Date_dep</th>
+                <th>Date_arrivee</th>
+                <th>Heure_arrivee</th>
+                <th>Heure_depart</th>
+                <th>Date_retour</th>
+                <th>Heure_retour</th>
+                <th>Nb_place</th>
+                <th>Nb_bagage</th>
+                <th>Prix_t</th>
+                <th>Disponibilite</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for transport in transports %}
+            <tr>
+                <td>{{ transport.id }}</td>
+                <td>{{ transport.lieuDepart }}</td>
+                <td>{{ transport.lieuArrivee }}</td>
+                <td>{{ transport.dateDep ? transport.dateDep|date('Y-m-d') : '' }}</td>
+                <td>{{ transport.dateArrivee ? transport.dateArrivee|date('Y-m-d') : '' }}</td>
+                <td>{{ transport.heureArrivee ? transport.heureArrivee|date('H:i:s') : '' }}</td>
+                <td>{{ transport.heureDepart ? transport.heureDepart|date('H:i:s') : '' }}</td>
+                <td>{{ transport.dateRetour ? transport.dateRetour|date('Y-m-d') : '' }}</td>
+                <td>{{ transport.heureRetour ? transport.heureRetour|date('H:i:s') : '' }}</td>
+                <td>{{ transport.nbPlace }}</td>
+                <td>{{ transport.nbBagage }}</td>
+                <td>{{ transport.prixT }}</td>
+                <td>{{ transport.disponibilite ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('transport_show', {'id': transport.id}) }}">show</a>
+                    <a href="{{ path('transport_edit', {'id': transport.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('transport_new') }}">Create new</a>
+{% endblock %}

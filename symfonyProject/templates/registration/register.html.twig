@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/fonts/font-awesome-4.7.0/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/fonts/Linearicons-Free-v1.0.0/icon-font.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/animate/animate.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/css-hamburgers/hamburgers.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/animsition/css/animsition.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/select2/select2.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/vendor/daterangepicker/daterangepicker.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/css/util.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('FRONT/compte/css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('/FRONT/css/nicdark_style.css') }}">
+    <link rel="stylesheet" href="{{ asset('/FRONT/css/nicdark_responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('/FRONT/css/revslider/settings.css') }}">
+{% endblock %}
+
+{% block js %}
+    {{ parent() }}
+    <script src="{{ asset('FRONT/compte/vendor/jquery/jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/animsition/js/animsition.min.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/bootstrap/js/popper.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/select2/select2.min.js') }}"></script>
+    <script>
+        $(".selection-2").select2({
+            minimumResultsForSearch: 20,
+            dropdownParent: $('#dropDownSelect1')
+        });
+    </script>
+    <script src="{{ asset('FRONT/compte/vendor/daterangepicker/moment.min.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/daterangepicker/daterangepicker.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/vendor/countdowntime/countdowntime.js') }}"></script>
+    <script src="{{ asset('FRONT/compte/js/main.js') }}"></script>
+
+{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+
+                <div class="login100-form validate-form">
+
+                <span class="login100-form-title p-b-34">
+						INSCRIPTION
+					</span>
+                    {{ form_start(registrationForm,{'attr': {'novalidate': 'novalidate'}} ) }}
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark " >
+                        {{ form_errors(registrationForm.nom) }}
+
+                        {{ form_widget(registrationForm.nom, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey large subtitle', 'placeholder':'Nom'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.prenom) }}
+
+                        {{ form_widget(registrationForm.prenom, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey large subtitle', 'placeholder':'Prénom'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.email) }}
+
+                        {{ form_widget(registrationForm.email, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey large subtitle', 'placeholder':'Email'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.date_naissance) }}
+
+                        {{ form_widget(registrationForm.date_naissance, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey medium subtitle'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.num_tel) }}
+
+                        {{ form_widget(registrationForm.num_tel, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey large subtitle', 'placeholder':'Téléphone'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+                    <div class=" mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.image) }}
+
+                        {{ form_widget(registrationForm.image, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Image'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+
+
+                    <div class="mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.plainPassword)}}
+
+                        {{ form_widget(registrationForm.plainPassword, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey medium subtitle', 'placeholder':'Mot de passe'}})}}
+                        <span class="focus-input100"></span>
+                    </div>
+
+
+                    <div class=" mb-3 nicdark_focus nicdark_relative nicdark ">
+                        {{ form_errors(registrationForm.agreeTerms)}}
+
+                        {{ form_widget(registrationForm.agreeTerms, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey small subtitle'}})}}
+                        <span class="focus-input100">
+                    </span>
+                    </div>
+                    <div></div>
+
+
+
+                    <div class="container-login100-form-btn">
+
+                        <button type="submit" class="login100-form-btn">S'inscrire</button>
+
+                    </div>
+                    {{ form_end(registrationForm) }}
+                </div>
+                <div class="login100-more" style="background-image: url('FRONT/compte/images/bg-01.jpg');"> </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{# <!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Inscription</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="FRONT/compte/images/icons/favicon.ico"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/css/util.css">
+    <link rel="stylesheet" type="text/css" href="FRONT/compte/css/main.css">
+
+
+    <!--START CSS-->
+    <link rel="stylesheet" href="/FRONT/css/nicdark_style.css"> <!--style-->
+    <link rel="stylesheet" href="/FRONT/css/nicdark_responsive.css"> <!--nicdark_responsive-->
+
+    <!--revslider-->
+    <link rel="stylesheet" href="/FRONT/css/revslider/settings.css"> <!--revslider-->
+    <!--===============================================================================================-->
+</head>
+<body>
+
+
+
+
+
+<div id="dropDownSelect1"></div>
+
+
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/bootstrap/js/popper.js"></script>
+<script src="FRONT/compte/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/select2/select2.min.js"></script>
+<script>
+    $(".selection-2").select2({
+        minimumResultsForSearch: 20,
+        dropdownParent: $('#dropDownSelect1')
+    });
+</script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/daterangepicker/moment.min.js"></script>
+<script src="FRONT/compte/vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+<script src="FRONT/compte/js/main.js"></script>
+
+</body>
+</html> #}

@@ -1,0 +1,104 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Proposer un événement{% endblock %}
+
+
+{% block body %}
+
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+
+            <div class="nicdark_space50"></div>
+
+
+            <div class="grid grid_12">
+                <h3 class="subtitle greydark">Proposer un événement</h3>
+                <div class="nicdark_space20"></div>
+                <div class="nicdark_divider left small"><span class="nicdark_bg_grey2 "></span></div>
+            </div>
+
+
+            <div class="grid grid_12">
+
+                <!--start nicdark_tabs-->
+                <div class="nicdark_tab">
+
+                    <ul class="nicdark_tabslist">
+                        <li><a  title="AMAZING EVENTS" href="#tabs-8" class="nicdark_tooltip nicdark_btn nicdark_bg_orange nicdark_border_grey nicdark_border_bottom_none medium white">
+                                <i class="icon-calendar-2 nicdark_displaynone_iphoneland nicdark_displaynone_iphonepotr nicdark_marginright10"></i>EVENTS</a></li>
+                    </ul>
+
+                    <div class="nicdark_tabs nicdark_border_grey nicdark_bg_white nicdark_sizing  ">
+                        {{ form_start(form) }}
+                        <div class="nicdark_margin20" id="tabs-7">
+                           {# event name#} <div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_focus nicdark_relative nicdark_icon_text">
+                                    {{ form_widget(form.nom_e,{'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey medium subtitle', 'placeholder':'Nom', 'size':'200'}}) }}
+                                </div>
+                            </div>
+                           {# start date#} <div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    <div class="nicdark_focus nicdark_relative nicdark_icon_date">
+                                        {{ form_widget(form.date_deb,{'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey medium subtitle nicdark_calendar', 'placeholder':'test'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {# end date#} <div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    <div class="nicdark_focus nicdark_relative nicdark_icon_date">
+                                        {{ form_widget(form.date_fin,{'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey medium subtitle nicdark_calendar', 'placeholder':'test'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                            {# category #}<div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    {{ form_widget(form.categoryId) }}
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="nicdark_margin20" id="tabs-8">
+                            {# price #}<div class="nicdark_focus nicdark_width_percentage25">
+
+                                <div class="nicdark_focus nicdark_relative nicdark_icon_text">
+                                    {{ form_widget(form.prix_e,{'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey medium subtitle', 'placeholder':'Prix', 'size':'200'}}) }}
+                                </div>
+
+                            </div>
+                            {# description #}<div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    {{ form_widget(form.description,{'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey medium subtitle', 'placeholder':'Description', 'size':'200'}}) }}
+                                </div>
+                            </div>
+                            {# file button#} <div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    <div class="nicdark_focus nicdark_relative nicdark_icon_select">
+                                        {{ form_widget(form.image_e,{'attr':{'class':'nicdark_btn fullwidth nicdark_bg_orange medium   white nicdark_press', 'placeholder':'test', 'size':'200'}}) }}
+                                    </div>
+                                </div>
+                            </div>
+                           {# button#} <div class="nicdark_focus nicdark_width_percentage25">
+                                <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                                    <input class="nicdark_btn fullwidth nicdark_bg_orange medium   white nicdark_press" type="submit" value="Ajouter"  >
+                                </div>
+                            </div>
+                        </div>
+                        {{ form_end(form) }}
+                    </div>
+
+                </div>
+                <!--end nicdark_tabs-->
+
+            </div>
+
+            <div class="nicdark_space50"></div>
+
+        </div>
+        <!--end nicdark_container-->
+    </section>
+
+{% endblock %}
