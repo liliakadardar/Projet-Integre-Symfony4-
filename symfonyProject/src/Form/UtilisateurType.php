@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Utilisateur;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -21,6 +22,12 @@ class UtilisateurType extends AbstractType
             ->add('image',FileType::class,[
                 'mapped'=> false,
                 'label'=>' please upload a image'
+            ])
+            ->add('save',SubmitType::class, [
+                'label'=>'Modifier',
+                'attr' => [
+                    'class' => 'btn bouton',
+                ]
             ])
 
         ;

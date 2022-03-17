@@ -1,0 +1,289 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<style>
+  .img{
+            width: 80px;
+            height: 80px;
+            background-size: cover;
+            display: block;
+            border-radius: 100px;
+            -webkit-border-radius: 100px;
+            -moz-border-radius: 100px;
+        }
+   </style>
+<!--start section-->
+<section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img5">
+
+    <div class="nicdark_filter greydark">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space100"></div>
+            <div class="nicdark_space100"></div>
+
+            <div class="nicdark_space70"></div> <!--for header 1-->
+
+            <div class="grid grid_6">
+                <h1 class="white subtitle">Restauration</h1>
+            </div>
+            <div class="grid grid_6 nicdark_displaynone_responsive">
+                <div class="nicdark_space5"></div>
+                <h4 class="white right subtitle"><a class="white" href="index.html">Accueil</a> <span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span> Restaurant</h4>
+            </div>
+
+            <div class="nicdark_space40"></div>
+            <div class="nicdark_space40"></div>
+
+        </div>
+        <!--end nicdark_container-->
+
+    </div>
+     
+</section>
+<!--end section-->
+
+<section class="nicdark_section">
+
+    <!--start nicdark_container-->
+    <div class="nicdark_container nicdark_clearfix">
+
+        <div class="nicdark_space40"></div>
+
+        
+        <!--start form-->
+        <div class="grid grid_12 nicdark_bg_greydark nicdark_sizing    nicdark_relative">
+
+            <a href="#" class="nicdark_displaynone_iphoneland nicdark_displaynone_iphonepotr nicdark_btn_icon nicdark_bg_green  extrabig _left white nicdark_absolute"><i class="icon-search"></i></a>
+
+            <div class="nicdark_textevidence">
+            
+                <div class="nicdark_margin1820 nicdark_marginleft100 nicdark_marginleft20_iphoneland nicdark_marginleft20_iphonepotr">
+                    <div class="nicdark_focus nicdark_width_percentage25">
+                        
+                        <div class="nicdark_focus nicdark_relative nicdark_icon_select">
+                            <select class="nicdark_bg_greydark2     grey medium subtitle">
+                                <option>RESTAURANT</option>
+                                <option>Region</option>
+                                
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="nicdark_focus nicdark_width_percentage25">
+                        <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                            
+                            <div class="nicdark_focus nicdark_relative nicdark_icon_text">
+                                <input class="nicdark_bg_greydark2    grey medium subtitle" type="text" placeholder="N° TEL" value="" size="200"> 
+                            </div>   
+
+                        </div>
+                    </div>
+                    <div class="nicdark_focus nicdark_width_percentage25">
+                        <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                            
+                            <div class="nicdark_focus nicdark_relative">
+                                <div>
+     
+
+                <div class="input-group custom-search-form">
+
+                    <input  class="nicdark_bg_greydark2     grey medium subtitle "  type="text" id="search" class="form-control" placeholder="Search here">
+  
+                </div>
+                <!-- /input-group -->
+            </div>
+            <ul class="nav" id="side-menu">
+                <li>
+                   
+                    <ul class="nav nav-second-level" id="entitiesNav">
+                    </ul>
+                </li>
+            </ul><br><br><br><br>
+
+            <script  type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+            <script type="text/javascript">
+                jQuery(document).ready(function() {
+                    var searchRequest = null;
+                    $("#search").keyup(function() {
+                        var minlength = 1;
+                        var that = this;
+                        var value = $(this).val();
+                        var entitySelector = $("#entitiesNav").html('');
+                        if (value.length >= minlength ) {
+                            if (searchRequest != null)
+                                searchRequest.abort();
+                            searchRequest = $.ajax({
+                                type: "GET",
+                                url: "{{ path('ajax_search') }}",
+                                data: {
+                                    'q' : value
+                                
+                                },
+                                dataType: "text",
+                                success: function(msg){
+                                    //we need to check if the value is the same
+                                    if (value===$(that).val()) {
+                                        var result = JSON.parse(msg);
+                                        $.each(result, function(key, arr) {
+                                            $.each(arr, function(id, value) {
+                                                if (key === 'restaurants') {
+                                                    if (id !== 'error') {
+                                                        entitySelector.append('<li><b>'+value[1]+'</b><a href="/show/'+id+'"><img class="img" src="/uploads/restaurant/'+value[0]+'" style="width: 60px; height: 60px"/></a></li>');
+                                                    } else {
+                                                        entitySelector.append('<li class="errorLi">'+value+'</li>');
+                                                    }
+                                                }
+                                            });
+                                        });
+                                    }
+                                }
+                            });
+                        }
+                    });
+                });
+            </script> 
+           
+               
+                            </div>
+
+                        </div>       
+                    </div>
+                    <div class="nicdark_focus nicdark_width_percentage25">
+                        <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
+                            <input class="nicdark_btn fullwidth nicdark_bg_green medium   white" type="submit" value="CHERCHER"  >     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end form-->
+
+        
+        <div class="grid grid_4">
+            
+            <!--start accomodation-->
+            <div class="nicdark_focus">
+                <img alt="" class="nicdark_width_percentage100" src="{{ asset('uploads/restaurant/' ~ restaurant.image) }}">
+                
+                <!--title e descr-->
+                <center>
+                <div class="nicdark_margin020 nicdark_border_bottom_none nicdark_padding20 nicdark_border_grey nicdark_relative nicdark_sizing nicdark_bg_white nicdark_margintop55_negative">
+                    <h4>Nom : {{ restaurant.nomResto }}</h4>
+                    <div class="nicdark_space20"></div> 
+                    <p>Numéro de telephone : {{ restaurant.numTel }}</p>
+                    <p>Ouverture : {{ restaurant.horraireOuverture ? restaurant.horraireOuverture|date('d/m/y H:m') : '' }}</p>
+                    <p>Fermeture : {{ restaurant.horraireFermeture ? restaurant.horraireFermeture|date('d/m/y H:m') : '' }}</p>
+                </div>
+                
+                
+                </center>
+                <!--end title e descr-->
+
+                <!--icons-->
+                {# <div class="nicdark_focus nicdark_padding020  nicdark_border_grey nicdark_sizing nicdark_bg_grey">
+                    <a title="Lorem" class=" nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey  nicdark_marginleft0"><i class="greydark nicdark_marginright10 icon-rss"></i> Wifi</a>
+                    <a title="Lorem" class="nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-snow"></i> Yes</a>
+                    <a title="Lorem" class=" nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-medkit"></i> 24 h</a>
+                    <a title="Lorem" class=" nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-users"></i> 4</a>
+                </div> #}
+                <!--end icons-->
+
+                <!--btns-->
+                <div class="nicdark_paddingtop0 nicdark_focus nicdark_sizing nicdark_padding20  nicdark_relative nicdark_sizing nicdark_bg_white ">
+                    <div class="nicdark_border_top_none nicdark_focus nicdark_padding20 nicdark_sizing nicdark_border_grey ">
+                        <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+                            <a href="#" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_bg_blue left  medium white">les restaurants </a>
+                        </div>
+                          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+                                   <div align="center" >
+
+       
+        <i class="fa fa-star fa-2x" data-index="0"></i>
+        <i class="fa fa-star fa-2x" data-index="1"></i>
+        <i class="fa fa-star fa-2x" data-index="2"></i>
+        <i class="fa fa-star fa-2x" data-index="3"></i>
+        <i class="fa fa-star fa-2x" data-index="4"></i>
+        <br><br>
+        <?php echo round($avg,2) ?>
+    </div>
+
+    <script src="http://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg=" crossorigin="anonymous"></script>
+    <script>
+        var ratedIndex = -1, uID = 0;
+
+        $(document).ready(function () {
+            resetStarColors();
+
+            if (localStorage.getItem('ratedIndex') != null) {
+                setStars(parseInt(localStorage.getItem('ratedIndex')));
+                uID = localStorage.getItem('uID');
+            }
+
+            $('.fa-star').on('click', function () {
+               ratedIndex = parseInt($(this).data('index'));
+               localStorage.setItem('ratedIndex', ratedIndex);
+               saveToTheDB();
+            });
+
+            $('.fa-star').mouseover(function () {
+                resetStarColors();
+                var currentIndex = parseInt($(this).data('index'));
+                setStars(currentIndex);
+            });
+
+            $('.fa-star').mouseleave(function () {
+                resetStarColors();
+
+                if (ratedIndex != -1)
+                    setStars(ratedIndex);
+            });
+        });
+
+        function saveToTheDB() {
+            $.ajax({
+               url: "index.php",
+               method: "POST",
+               dataType: 'json',
+               data: {
+                   save: 1,
+                   uID: uID,
+                   ratedIndex: ratedIndex
+               }, success: function (r) {
+                    uID = r.id;
+                    localStorage.setItem('uID', uID);
+               }
+            });
+        }
+
+        function setStars(max) {
+            for (var i=0; i <= max; i++)
+                $('.fa-star:eq('+i+')').css('color', 'yellow');
+        }
+
+        function resetStarColors() {
+            $('.fa-star').css('color', 'green');
+        }
+    </script>
+                        {# <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+                            <a href="#" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_border_grey nicdark_bg_white right medium grey">From 200 $</a>
+                        </div> #}
+                    </div>
+                </div>
+                <!--end btns-->
+
+            </div>
+            <!--end accomodation-->
+
+        </div>
+       
+
+
+    </div>
+    <!--end container-->
+
+</section>
+
+{% endblock %}

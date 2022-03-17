@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EvenementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -64,8 +66,28 @@ class Evenement
     /**
      * @ORM\ManyToOne(targetEntity=CategorieE::class, inversedBy="evenements")
      * @ORM\JoinColumn(nullable=false)
+     *
      */
     private $categoryId;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $rating;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeE::class, mappedBy="evenement")
+     */
+    private $commandeEs;
+
+    public function __construct()
+    {
+        $this->commandeEs = new ArrayCollection();
+    }
+
+
+
+
 
     public function getId(): ?int
     {
@@ -152,6 +174,48 @@ class Evenement
     public function setCategoryId(?CategorieE $categoryId): self
     {
         $this->categoryId = $categoryId;
+
+        return $this;
+    }
+
+    public function getRating(): ?int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(?int $rating): self
+    {
+        $this->rating = $rating;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CommandeE>
+     */
+    public function getCommandeEs(): Collection
+    {
+        return $this->commandeEs;
+    }
+
+    public function addCommandeE(CommandeE $commandeE): self
+    {
+        if (!$this->commandeEs->contains($commandeE)) {
+            $this->commandeEs[] = $commandeE;
+            $commandeE->setEvenement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeE(CommandeE $commandeE): self
+    {
+        if ($this->commandeEs->removeElement($commandeE)) {
+            // set the owning side to null (unless already changed)
+            if ($commandeE->getEvenement() === $this) {
+                $commandeE->setEvenement(null);
+            }
+        }
 
         return $this;
     }

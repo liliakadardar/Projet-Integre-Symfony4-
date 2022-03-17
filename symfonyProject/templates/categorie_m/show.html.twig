@@ -1,0 +1,33 @@
+
+
+{% extends 'base-back.html.twig' %}
+
+{% block title %}CategorieM{% endblock %}
+
+{% block body %}
+<div style="padding-left:40% ; padding-top:10%" >
+
+<h1>Categorie du matériel</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <th>NomCatM</th>
+
+            </tr>
+            <tr>
+                <td>{{ categorie_m.id }}</td>
+                <td>{{ categorie_m.nomCatM }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('categorie_m_index') }}">back to list</a>
+
+    <a href="{{ path('categorie_m_edit', {'id': categorie_m.id}) }}">edit</a>
+
+    {{ include('categorie_m/_delete_form.html.twig') }}
+</div>
+{% endblock %}

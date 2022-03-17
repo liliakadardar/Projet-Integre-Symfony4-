@@ -1,0 +1,30 @@
+<p class="text-center", style="color:#00aced ;text-align: center; font-size: 45px "><strong>Matériels ajoutés</strong> </p>
+
+<table class="border border-primary", style=" margin-left: 2cm; margin-right: 2cm ;padding-left: 1cm; padding-right: 1cm;padding-top: 1cm; background-color:#D4E6F1; border: #0c4382; align:center ">
+    <thead style="background-color: #00aced">
+    <tr class="table-primary">
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Prix_m</th>
+        <th>Nom_materiel</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for materiel in materiels %}
+        <tr class="table-light">
+            <td >{{ materiel.id }}</td>
+            <td>{{ materiel.nom }}</td>
+            <td>{{ materiel.prenom }}</td>
+            <td>{{ materiel.numtel }}</td>
+            <td>{{ materiel.prixM }}</td>
+            <td>{{ materiel.nomMateriel }}</td>
+        </tr>
+    {% else %}
+        <tr>
+            <td colspan="6">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Form;
+
+use App\Entity;
+use App\Entity\RestaurantSearch;
+use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+
+class RestaurantSearchType extends AbstractType
+{
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
+            ->add('nom_resto')
+        ;
+    }
+
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+            'data_class' => RestaurantSearch::class,
+        ]);
+    }
+}

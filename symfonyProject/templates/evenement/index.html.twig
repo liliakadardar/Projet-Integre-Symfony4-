@@ -1,7 +1,22 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Evenement index{% endblock %}
+{% block extracss %}
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet"/>
+    <link href="/FRONT/css/star-rating.css" rel="stylesheet"/>
+    <link href="/FRONT/css/star-rating-demo.css" rel="stylesheet"/>
 
+{% endblock %}
+{% set nearEventsTotal = 0 %}
+{% for evenement in evenements %}
+    {% set datePost = evenement.dateDeb|date('d-m-Y') %}
+    {% set today = "now"|date('d-m-Y') %}
+    {% set difference = date(today).diff(date(datePost)) %}
+    {% set leftDays = difference.days %}
+    {% if leftDays < 7 and leftDays >-1 %}
+        {% set nearEventsTotal = nearEventsTotal + 1 %}
+    {% endif %}
+{% endfor %}
 {% block body %}
 
     <!--start section-->
@@ -22,7 +37,10 @@
                 </div>
                 <div class="grid grid_6 nicdark_displaynone_responsive">
                     <div class="nicdark_space5"></div>
-                    <h4 class="white right subtitle">Evenements<span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span><a class="white" href="{{ path('evenement_new') }}">Ajouter</a></h4>
+                    <h4 class="white right subtitle">Evenements<span
+                                class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span><a class="white"
+                                                                                                    href="{{ path('evenement_new') }}">Ajouter</a>
+                    </h4>
                 </div>
 
                 <div class="nicdark_space40"></div>
@@ -46,86 +64,105 @@
             <div class="nicdark_space50"></div>
 
 
-            <div class="grid grid_12 nicdark_bg_white nicdark_sizing nicdark_border_grey   nicdark_relative">
-
-                <a href="#" class="nicdark_displaynone_iphoneland nicdark_displaynone_iphonepotr nicdark_btn_icon nicdark_bg_green  extrabig _left white nicdark_absolute"><i class="icon-search"></i></a>
-
-                <div class="nicdark_textevidence">
-                    <div class="nicdark_margin1820 nicdark_marginleft100 nicdark_marginleft20_iphoneland nicdark_marginleft20_iphonepotr">
-                        <div class="nicdark_focus nicdark_width_percentage25">
-
-                            <div class="nicdark_focus nicdark_relative nicdark_icon_text">
-                                <input class="nicdark_bg_white nicdark_border_grey   grey medium subtitle" type="text" placeholder="NAME" value="" size="200">
-                            </div>
-
-                        </div>
-                        <div class="nicdark_focus nicdark_width_percentage25">
-                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
-
-                                <div class="nicdark_focus nicdark_relative nicdark_icon_select">
-                                    <select class="nicdark_bg_white nicdark_border_grey    grey medium subtitle">
-                                        <option>SELECT</option>
-                                        <option>ONE</option>
-                                        <option>TWO</option>
-                                    </select>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="nicdark_focus nicdark_width_percentage25">
-                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
-
-                                <div class="nicdark_focus nicdark_relative nicdark_icon_date">
-                                    <input class="nicdark_bg_white nicdark_border_grey    grey medium subtitle nicdark_calendar" placeholder="DATE" type="text" value="">
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="nicdark_focus nicdark_width_percentage25">
-                            <div class="nicdark_marginleft20 nicdark_disable_marginleft_iphoneland nicdark_disable_marginleft_iphonepotr">
-                                <input class="nicdark_btn fullwidth nicdark_bg_green medium   white" type="submit" value="SEARCH"  >
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
             <div class="nicdark_space10"></div>
 
             {% for evenement in evenements %}
-            <div class="grid grid_3">
+                <div class="grid grid_3">
 
-                <div class="nicdark_archive1 nicdark_border_grey nicdark_sizing nicdark_bg_white  ">
+                    <div class="nicdark_archive1 nicdark_border_grey nicdark_sizing nicdark_bg_white  ">
 
-                    <img alt="" src="{{ asset('uploads/event_pictures/' ~ evenement.imageE) }}">
+                        <img alt="" src="{{ asset('uploads/image/' ~ evenement.imageE) }}">
 
-                    <div class="nicdark_textevidence nicdark_bg_greydark center">
-                        <h4 class="white nicdark_margin20">{{ evenement.nomE }}</h4>
-                    </div>
-
-                    <div class="nicdark_textevidence nicdark_bg_red center">
-                        <h5 class="white nicdark_margin10">{{ evenement.dateDeb|date("m/d/Y") }}</h5>
-                    </div>
-
-                    <div class="nicdark_textevidence center">
-                        <div class="nicdark_margin20">
-                            <p>{{ evenement.description }}</p>
-                            <div class="nicdark_space20"></div>
-                            <div class="row">
-                                <div class="col col-md-3">
-                            <a href="{{ path('evenement_showsingle', {'id': evenement.id}) }}" class="nicdark_press white nicdark_btn nicdark_bg_red medium  ">MORE INFO</a>
-                                </div>
-                                <div class="col col-md-3">
-                                    <a href="{{ path('evenement_edit', {'id': evenement.id}) }}" class="nicdark_press white nicdark_btn nicdark_bg_red medium  ">Modifier</a>
-                                </div>
+                        <div class="nicdark_textevidence nicdark_bg_greydark center">
+                            <h4 class="white nicdark_margin20">{{ evenement.nomE }}</h4>
                         </div>
+
+                        <div class="nicdark_textevidence nicdark_bg_red center">
+                            <h5 class="white nicdark_margin10">{{ evenement.dateDeb|date("m/d/Y") }}</h5>
                         </div>
+
+                        <div class="nicdark_textevidence center">
+                            <div class="nicdark_margin20">
+                                <h5 class="nicdark_margin10 nourRatingFinal">
+                                    Rating: {% if evenement.rating is not empty %}{{ evenement.rating }}{% else %}Pas de rating{% endif %}</h5>
+
+                                <div style="padding-left: 20%;">
+                                <span class="gl-star-rating">
+                            <select id="glsr-prebuilt" class="star-rating-prebuilt">
+                                <option value="">Rate us</option>
+                                <option value="5">5 Stars</option>
+                                <option value="4">4 Stars</option>
+                                <option value="3">3 Stars</option>
+                                <option value="2">2 Stars</option>
+                                <option value="1">1 Star</option>
+                            </select>
+                            <span class="gl-star-rating--stars" eventId="{{ evenement.id }}">
+                            <span data-value="1" class="starNour"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 24 24" class="gl-emote"
+                                                                       style="pointer-events: none;"><circle
+                                            class="gl-emote-bg" fill="#FFA98D" cx="12" cy="12" r="10"></circle><path
+                                            fill="#393939"
+                                            d="M12 14.6c1.48 0 2.9.38 4.15 1.1a.8.8 0 01-.79 1.39 6.76 6.76 0 00-6.72 0 .8.8 0 11-.8-1.4A8.36 8.36 0 0112 14.6zm4.6-6.25a1.62 1.62 0 01.58 1.51 1.6 1.6 0 11-2.92-1.13c.2-.04.25-.05.45-.08.21-.04.76-.11 1.12-.18.37-.07.46-.08.77-.12zm-9.2 0c.31.04.4.05.77.12.36.07.9.14 1.12.18.2.03.24.04.45.08a1.6 1.6 0 11-2.34-.38z"></path></svg></span>
+                            <span data-value="2" class="starNour"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 24 24" class="gl-emote"
+                                                                       style="pointer-events: none;"><circle
+                                            class="gl-emote-bg" fill="#FFC385" cx="12" cy="12" r="10"></circle><path
+                                            fill="#393939"
+                                            d="M12 14.8c1.48 0 3.08.28 3.97.75a.8.8 0 11-.74 1.41A8.28 8.28 0 0012 16.4a9.7 9.7 0 00-3.33.61.8.8 0 11-.54-1.5c1.35-.48 2.56-.71 3.87-.71zM15.7 8c.25.31.28.34.51.64.24.3.25.3.43.52.18.23.27.33.56.7A1.6 1.6 0 1115.7 8zM8.32 8a1.6 1.6 0 011.21 2.73 1.6 1.6 0 01-2.7-.87c.28-.37.37-.47.55-.7.18-.22.2-.23.43-.52.23-.3.26-.33.51-.64z"></path></svg></span>
+                            <span data-value="3" class="starNour"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 24 24" class="gl-emote"
+                                                                       style="pointer-events: none;"><circle
+                                            class="gl-emote-bg" fill="#FFD885" cx="12" cy="12" r="10"></circle><path
+                                            fill="#393939"
+                                            d="M15.33 15.2a.8.8 0 01.7.66.85.85 0 01-.68.94h-6.2c-.24 0-.67-.26-.76-.7-.1-.38.17-.81.6-.9zm.35-7.2a1.6 1.6 0 011.5 1.86A1.6 1.6 0 1115.68 8zM8.32 8a1.6 1.6 0 011.21 2.73A1.6 1.6 0 118.33 8z"></path></svg></span>
+                            <span data-value="4" class="starNour"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 24 24" class="gl-emote"
+                                                                       style="pointer-events: none;"><circle
+                                            class="gl-emote-bg" fill="#FFD885" cx="12" cy="12" r="10"></circle><path
+                                            fill="#393939"
+                                            d="M15.45 15.06a.8.8 0 11.8 1.38 8.36 8.36 0 01-8.5 0 .8.8 0 11.8-1.38 6.76 6.76 0 006.9 0zM15.68 8a1.6 1.6 0 011.5 1.86A1.6 1.6 0 1115.68 8zM8.32 8a1.6 1.6 0 011.21 2.73A1.6 1.6 0 118.33 8z"></path></svg></span>
+                            <span data-value="5" class="starNour"><svg xmlns="http://www.w3.org/2000/svg"
+                                                                       viewBox="0 0 24 24" class="gl-emote"
+                                                                       style="pointer-events: none;"><circle
+                                            class="gl-emote-bg" fill="#FFD885" cx="12" cy="12" r="10"></circle><path
+                                            fill="#393939"
+                                            d="M16.8 14.4c.32 0 .59.2.72.45.12.25.11.56-.08.82a6.78 6.78 0 01-10.88 0 .78.78 0 01-.05-.87c.14-.23.37-.4.7-.4zM15.67 8a1.6 1.6 0 011.5 1.86A1.6 1.6 0 1115.68 8zM8.32 8a1.6 1.6 0 011.21 2.73A1.6 1.6 0 118.33 8z"></path></svg></span>
+                        </span>
+                                </span>
+                                </div>
+                                <p>{{ evenement.description }}</p>
+
+
+                                <div class="nicdark_space20"></div>
+                                <div class="row">
+
+                                    <div class="col col-md-6">
+                                    <span class="gl-star-rating">
+
+                                      </span>
+                                        <a href="{{ path('evenement_showsingle', {'id': evenement.id}) }}"
+                                           class="nicdark_press white nicdark_btn nicdark_bg_green medium  ">MORE
+                                            INFO</a>
+                                    </div>
+                                    <div class="col col-md-6">
+                                        <a href="{{ path('evenement_edit', {'id': evenement.id}) }}"
+                                           class="nicdark_press white nicdark_btn nicdark_bg_orange medium  ">Modifier</a>
+                                    </div>
+
+
+                                    <div class="nicdark_space20"></div>
+
+                                </div>
+                            </div>
+
+                            <a href="{{ path('commande_e_new', {'id': evenement.id}) }}"
+                               class="grey nicdark_btn nicdark_bg_grey nicdark_border_grey  medium   nicdark_press"><i
+                                        class="icon-basket"></i>Commander</a>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
             {% endfor %}
 
         </div>
@@ -135,7 +172,7 @@
     <!--end section-->
 
     <!--start section-->
-    {#  <div class="nicdark_section">
+    {# <div class="nicdark_section">
 
         <!--start nicdark_container-->
         <div class="nicdark_container nicdark_clearfix">
@@ -154,10 +191,49 @@
         </div>
         <!--end nicdark_container-->
 
-    </div>#}
+    </div> #}
 
 {% endblock %}
+{% block extraJS %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"
+            integrity="sha512-YBk7HhgDZvBxmtOfUdvX0z8IH2d10Hp3aEygaMNhtF8fSOvBZ16D/1bXZTJV6ndk/L/DlXxYStP8jrF77v2MIg=="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/plugins/autoloader/prism-autoloader.min.js"
+            integrity="sha512-zc7WDnCM3aom2EziyDIRAtQg1mVXLdILE09Bo+aE1xk0AM2c2cVLfSW9NrxE5tKTX44WBY0Z2HClZ05ur9vB6A=="
+            crossorigin="anonymous"></script>
 
+    <script src="/FRONT/js/star-rating.js"></script>
+    <script>
+        toastr.options = {
+            "positionClass": "toast-bottom-right",
+        }
+        //MEN HNA
+        var starratingPrebuilt = new StarRating('.star-rating-prebuilt', {
+            prebuilt: true,
+            maxStars: 5,
+            tooltip: 'Rate us'
+
+        });
+        $(".starNour").click(function () {
+            $.get($(this).parent().attr("eventId") + "/editRating/" + $(this).attr("data-value"), function (data) {
+                toastr.success("Rating changed!");
+            });
+            $(this).parent().parent().parent().parent().find(".nourRatingFinal").text("Rating: " + $(this).attr("data-value"));
+            console.log("clicked " + $(this).attr("data-value"))
+        });
+        //LAHNE
+
+
+        setTimeout(function () {
+
+            toastr.info('There is a total of {{ nearEventsTotal }} events happening this week!');
+
+        }, 5000);//alert after 5000 ms
+
+
+    </script>
+{% endblock %}
 {# <h1>Evenement index</h1>
 
     <table class="table">
@@ -196,4 +272,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('evenement_new') }}">Create new</a>  #}
+    <a href="{{ path('evenement_new') }}">Create new</a> #}

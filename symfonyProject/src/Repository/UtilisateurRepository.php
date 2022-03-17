@@ -36,6 +36,21 @@ class UtilisateurRepository extends ServiceEntityRepository implements PasswordU
         $this->_em->flush();
     }
 
+
+    /**
+     *
+     * Requête QueryBuilder
+     */
+    public function listUtilisateurTri(){
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.nom','DESC')
+            ->getQuery()
+            ->getResult()
+
+            ;
+
+    }
+
     // /**
     //  * @return Utilisateur[] Returns an array of Utilisateur objects
     //  */

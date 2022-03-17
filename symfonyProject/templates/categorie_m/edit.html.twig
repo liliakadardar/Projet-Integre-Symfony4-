@@ -1,0 +1,16 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Modifier CategorieM{% endblock %}
+
+{% block body %}
+    <div style="padding-left:40% ; padding-top:10%" >
+
+<h1>Modifier Categorie du matériel</h1>
+
+    {{ include('categorie_m/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('categorie_m_index') }}">back to list</a>
+
+    {{ include('categorie_m/_delete_form.html.twig') }}
+</div>
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}CommandeE index{% endblock %}
+
+{% block body %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="page-titles">
+            <h4>List Commandes Evenement </h4>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item active"><a href="{{ path("commande_e_new_admin") }}">Ajouter une Commande d'un evenement</a></li>
+            </ol>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="text-center">Id</th>
+                <th class="text-center">Date_creation</th>
+                <th class="text-center">Address_destination</th>
+                <th class="text-center">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_e in commande_es %}
+            <tr>
+            <tr>
+
+
+                <td class="text-center">{{ commande_e.id }}</td>
+                <td class="text-center">{{ commande_e.dateCreation ? commande_e.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td class="text-center">{{ commande_e.addressDestination }}</td>
+                <td class="text-center">
+                    <a type="button" href="{{ path('commande_e_show_admin', {'id': commande_e.id}) }}" class="btn btn-rounded btn-outline-warning">show</a>
+                    <a type="button" href="{{ path('commande_e_edit_admin', {'id': commande_e.id}) }}" class="btn btn-rounded btn-outline-warning">edit</a>
+                    <a type="button" href="{{ path('commande_e_delete_admin', {'id': commande_e.id}) }}" class="btn btn-rounded btn-outline-warning">delete</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        <a type="button"  href="{{ path('commande_e_new_admin') }}" class="btn btn-rounded btn-outline-warning">Create new</a>
+        </tbody>
+    </table>
+                    </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+    </div>
+{% endblock %}

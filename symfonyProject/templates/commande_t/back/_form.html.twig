@@ -1,0 +1,10 @@
+
+{{ form_start(form) }}
+
+ {{ form_errors(form.date_creation)}}
+    {{ form_widget(form.date_creation) }}
+    {{ form_errors(form.address_destination)}}
+    {{ form_widget(form.address_destination) }}
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

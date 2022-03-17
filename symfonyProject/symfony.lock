@@ -79,11 +79,20 @@
     "doctrine/sql-formatter": {
         "version": "1.1.2"
     },
+    "dompdf/dompdf": {
+        "version": "v1.2.0"
+    },
     "egulias/email-validator": {
         "version": "3.1.2"
     },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
+    },
+    "gregwar/captcha": {
+        "version": "v1.1.9"
+    },
+    "gregwar/captcha-bundle": {
+        "version": "v2.1.5"
     },
     "knplabs/knp-components": {
         "version": "v3.4.0"
@@ -93,6 +102,9 @@
     },
     "laminas/laminas-code": {
         "version": "4.5.1"
+    },
+    "mercuryseries/flashy-bundle": {
+        "version": "v3.0.0"
     },
     "monolog/monolog": {
         "version": "1.26.1"
@@ -108,6 +120,12 @@
     },
     "phar-io/version": {
         "version": "3.1.0"
+    },
+    "phenx/php-font-lib": {
+        "version": "0.5.4"
+    },
+    "phenx/php-svg-lib": {
+        "version": "0.4.1"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -161,6 +179,9 @@
     },
     "psr/log": {
         "version": "1.1.4"
+    },
+    "sabberworm/php-css-parser": {
+        "version": "8.4.0"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -221,6 +242,9 @@
         "files": [
             "./config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "stripe/stripe-php": {
+        "version": "v7.116.0"
     },
     "swiftmailer/swiftmailer": {
         "version": "v6.3.0"

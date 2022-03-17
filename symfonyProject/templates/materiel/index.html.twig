@@ -1,0 +1,117 @@
+{% extends 'base-back.html.twig' %}
+
+{% block body %}
+
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Afficher</h4>
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item active"><a href="#">tout les matériels</a></li>
+                </ol>
+            </div>
+            <!-- row -->
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Liste des catégories des matériels </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="topbar-search">
+                                <form>
+                                    <label class="navbar-collapse">
+                                        <input class="form-control" type="text" width="100px" height="100px" name="AfficherClasse"
+                                               onkeyup="myFunction()" placeholder="Recherche " id="myInput">
+
+                                        <i class="fa fa-search"></i></label>
+                                </form>
+
+                                <a class="btn btn-success" href="{{path('imprimer') }}">  PDF </a>
+                                <div class="nicdark_space30"></div>
+                            </div>
+                            <div class="table-responsive">
+
+                                <table id="materiel" class="display min-w850  dataTable no-footer">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Email</th>
+                                        <th>Numtel</th>
+                                        <th>Prix_m</th>
+                                        <th>Description</th>
+                                        <th>Nom_materiel</th>
+                                        <th>Image</th>
+                                        <th>actions</th>
+                                    </tr>
+
+                                    </thead>
+                                    <tbody id="myTable">
+
+                                    {% for materiel in materiels %}
+                                        <tr>
+                                            <td>{{ materiel.id }}</td>
+                                            <td>{{ materiel.nom }}</td>
+                                            <td>{{ materiel.prenom }}</td>
+                                            <td>{{ materiel.email }}</td>
+                                            <td>{{ materiel.numtel }}</td>
+                                            <td>{{ materiel.prixM }}</td>
+                                            <td>{{ materiel.description }}</td>
+                                            <td>{{ materiel.nomMateriel }}</td>
+                                            <td><img src="{{ asset('uploads/'~materiel.image ) }}" alt="" width="50px" height="50px"/></td>
+
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="12">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+
+                                </table>
+                                <div class="navigation">
+                                    {#    {{ knp_pagination_render(utilisateurs,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+                                    #}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function myFunction() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("materiel");
+            tr = table.getElementsByTagName("tr");
+            //   alert(td.length);
+            for (i = 0; i < tr.length; i++) {
+                var rowContent = tr[i].textContent;
+                rowContent = rowContent.replace(/[\s]+/g, ' ');
+                //console.log(rowContent);
+
+                if (rowContent) {
+                    if (rowContent.toUpperCase().includes(filter)) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+
+            }
+        }
+
+
+    </script>
+
+
+{% endblock %}

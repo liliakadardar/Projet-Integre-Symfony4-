@@ -1,0 +1,114 @@
+{% use 'bootstrap_4_layout.html.twig' %}
+{% extends 'base.html.twig' %}
+{% block title %}Modifier Commande{% endblock %}
+
+{% block body %}
+
+
+
+
+
+
+
+
+    <div class="grid grid_12">
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space30"></div>
+
+
+    <h1>Modifier Commande</h1>
+
+
+
+    <table class="table">
+    <tbody class="nicdark_border_yellow">
+
+
+    {{ form_start(form) }}
+    <tr>
+
+        <th>date_commande  </th>
+        <td>
+            {{ form_widget(form.date_commande ) }}
+        </td>
+    </tr>
+
+
+    <tr>
+        <th>adresse_destination  </th>
+        <td>
+            {{ form_errors(form.adresse_destination)}}
+            {{ form_widget(form.adresse_destination) }}
+
+        </td>
+    </tr>
+
+    <tr>
+        <th> numero commande evenement </th>
+        <td>
+            {{ form_widget(form.CommandeE_c) }}
+        </td>
+
+    </tr>
+
+
+    <tr>
+        <th>  numero commande materiel </th>
+        <td>
+            {{ form_widget(form.CommandeM_c) }}
+        </td>
+
+    </tr>
+
+
+    {#  <div class="nicdark_space20"></div>
+                <p>CATEGORIE MATERIEL:</p>
+                <div class="nicdark_space5"></div>
+                <label for="cat" ></label>
+                <select id="cat" class="nicdark_bg_grey nicdark_border_grey   grey small subtitle" type="option" value="" >
+                    <option value="">CHOIX</option>
+                    <optgroup label="" >
+                        <option value="">Tente et abris</option>
+                        <option value="">Vêtement</option>
+                        <option value="">Couchage</option>
+                        <option value="">Mobilier de camping</option>
+                        <option value="">Boire et manger</option>
+                        <option value="">Autres equipement</option>
+                    </optgroup>
+                </select>
+                <div class="nicdark_space20"></div>
+                {{ form_errors(form.IdCatM) }}
+                {{ form_widget(form.IdCatM, {'attr':{'class':"nicdark_bg_grey nicdark_border_grey   grey medium subtitle"}})}}
+                <div class="nicdark_space20"></div> #}
+
+
+
+    <tr>
+        <th> numero commande transport</th>
+        <td>
+            {{ form_widget(form.commmandeT_c) }}
+        </td>
+    </tr>
+
+    {#    {{ include('commande/_form.html.twig', {'button_label': 'add', 'class':'btn btn-rounded btn-outline-warning'}) }}#}
+
+ {#   {{ include('commande/_form.html.twig', {'button_label': 'Update'}) }}#}
+
+    </tbody>
+    </table>
+        {{ form_row(form.save,{'attr':{'class':"nicdark_btn_icon nicdark_bg_green small _circle white"}}) }}
+
+        {{ form_end(form) }}
+
+        <a href="{{ path('index_c') }}">back to list</a>
+
+    </div>
+    {# <div style="margin:auto" >
+    {{ form(form) }}
+        </div>
+    <a href="{{ path('index_c') }}" class="nicdark_btn_icon nicdark_bg_green small _circle white">back to list</a>
+
+    {{ include('commande/_delete_form.html.twig') }}#}
+{% endblock %}

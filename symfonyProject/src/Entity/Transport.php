@@ -104,6 +104,11 @@ class Transport
      */
     private $categorieT;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CommandeT::class, inversedBy="transport")
+     */
+    private $commandeT;
+
 
 
 
@@ -265,6 +270,18 @@ class Transport
     public function setCategorieT(?CategorieT $categorieT): self
     {
         $this->categorieT = $categorieT;
+
+        return $this;
+    }
+
+    public function getCommandeT(): ?CommandeT
+    {
+        return $this->commandeT;
+    }
+
+    public function setCommandeT(?CommandeT $commandeT): self
+    {
+        $this->commandeT = $commandeT;
 
         return $this;
     }

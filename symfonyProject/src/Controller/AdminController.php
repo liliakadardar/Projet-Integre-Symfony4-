@@ -27,7 +27,7 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('admin/index.html.twig', [
+        return $this->render('admin/profileAdmin.html.twig', [
             'controller_name' => 'AdminController',
         ]);
     }
@@ -76,8 +76,11 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $form->get('image')->getData();
+
             $filename = md5(uniqid()).'.'.$file->guessExtension();
+
             $file->move($this->getParameter('image_directory'),$filename);
+
             $utilisateur->setImage($filename);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->flush();
@@ -89,10 +92,6 @@ class AdminController extends AbstractController
 
         ]);
     }
-
-
-
-
 
 
 
@@ -120,7 +119,35 @@ class AdminController extends AbstractController
     }
 
 
+    /**
+     * @Route("utilisateur/{id}/desactiver", name="desactiver-user")
+     */
+    public function desactiverUser($id)
+    {
+        $user = $this->getDoctrine()->getRepository(utilisateur::class)->find($id);
+        $user->setIsVerified(0);
+        $user->setRoles(["ROLE_USER", "ROLE_BLOQ"]);
+        $entityManager = $this->getDoctrine()->getManager();
 
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin');
+    }
+
+    /**
+     * @Route("utilisateur/{id}/activer", name="activer-user")
+     */
+    public function activerUser($id)
+    {
+        $user = $this->getDoctrine()->getRepository(Utilisateur::class)->find($id);
+        $user->setIsVerified(1);
+        $user->setRoles(["ROLE_USER"]);
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('admin');
+    }
 
 
 

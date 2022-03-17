@@ -19,6 +19,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 
 
@@ -192,7 +193,7 @@ class TransportController extends AbstractController
     }
 
     /**
-     *
+     * @IsGranted ("ROLE_USER")
      * @Route("/ajoutertransportuser", name="ajoutertransportuser")
      */
     public function ajoutertransportuser(Request $request)
@@ -232,7 +233,7 @@ class TransportController extends AbstractController
 
 
     /**
-     * @Route("/stat", name="stat")
+     * @Route("/transport/stat", name="stat_transport")
      */
     public function statAction(CategorieTRepository $repo)
     {

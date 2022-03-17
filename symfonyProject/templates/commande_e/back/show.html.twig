@@ -1,0 +1,43 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Commande Evenement{% endblock %}
+
+{% block body %}
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="page-titles">
+            <h4>Commande Evenement</h4>
+        </div>
+        <div class="col-lg-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+    <table class="table table-hover table-responsive-sm">
+        <tbody>
+            <tr>
+                <th class="text-center">Id</th>
+                <td class="text-center">{{ commande_e.id }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Date_creation</th>
+                <td class="text-center">{{ commande_e.dateCreation ? commande_e.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th class="text-center">Address_destination</th>
+                <td class="text-center">{{ commande_e.addressDestination }}</td>
+            </tr>
+        </tbody>
+    </table>
+                        <a type="button" href="{{ path('commande_e_index_admin') }}" class="btn btn-rounded btn-outline-warning">back to list</a>
+
+                        <a type="button" href="{{ path('commande_e_edit_admin', {'id': commande_e.id}) }}" class="btn btn-rounded btn-outline-warning">edit</a>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /# card -->
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -18,9 +18,9 @@
                                 <div class="cover-photo"></div>
                             </div>-->
                             <div class="profile-info">
-                                <div class="profile-photo">
-                                    <img src="{{ asset('uploads/image/' ~ app.user.image) }}" class="img-fluid rounded-circle" alt="">
-                                </div>
+
+                                    <img src="{{ asset('uploads/image/' ~ app.user.image) }}" style="width:100px;height:100px;"class="img-fluid rounded-circle" alt="">
+
                                 <div class="profile-details">
                                     <div class="profile-name px-3 pt-2">
                                         <h4 class="text-primary mb-0">{{ app.user.nom }}</h4>
@@ -87,40 +87,7 @@
 
                                             </div>
                                         </div>
-                                        <div id="profile-settings" class="tab-pane fade">
-                                            <div class="pt-3">
-                                                <div class="settings-form">
-                                                    <h4 class="text-primary">Modification Profil</h4>
 
-                                                    <form name="utilisateur" method="Get">
-                                                        <div id="utilisateur">
-                                                            <div class="form-row">
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="utilisateur_nom" class="required">Nom</label>
-                                                                    <input type="textType" id="utilisateur_nom" class=" form-control " name="utilisateur[nom]" required="required"  value="{{ utilisateur.nom }}">
-                                                                </div>
-                                                                <div class="form-group col-md-6">
-                                                                    <label for="utilisateur_prenom" class="required">Prénom</label>
-                                                                    <input type="textType" id="utilisateur_prenom" name="utilisateur[prenom]"class="form-control" required="required"  value="{{ utilisateur.prenom }}">
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="utilisateur_email" class="required">Email</label>
-                                                                <input type="email" id="utilisateur_email" name="utilisateur[email]" class=" form-control"   required="required" value="{{ utilisateur.email }}">
-
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <label for="utilisateur_numTel" class="required">Téléphone</label>
-                                                                <input type="TelType" id="utilisateur_numTel" name="utilisateur[numTel]"  class="form-control"   required="required" value="{{ utilisateur.numTel }}">
-                                                            </div>
-
-                                                            <button class="btn btn-primary"><a href="">Valider</a></button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                                 <!-- Modal -->

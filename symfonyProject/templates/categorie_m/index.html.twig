@@ -1,0 +1,89 @@
+{% extends 'base-back.html.twig' %}
+
+{% block body %}
+
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Ajouter</h4>
+                <ol class="breadcrumb">
+
+                    <li class="breadcrumb-item active"><a href="{{ path('categorie_m_new') }}">une nouvelle catégorie</a></li>
+                </ol>
+            </div>
+            <!-- row -->
+
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Liste des catégories des matériels </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+
+                                <table id="t" class="display min-w850  dataTable no-footer">
+                                    <thead>
+                                    <tr>
+                                        <th>Id</th>
+                                        <th >NomCatM</th>
+
+
+                                        <th>Actions</th>
+                                    </tr>
+
+                                    </thead>
+                                    <tbody id="myTable">
+
+                                    {% for categorie_m in categorie_ms %}
+
+
+                                            <td>{{ categorie_m.id }}</td>
+                                            <td>{{ categorie_m.nomCatM }}</td>
+
+
+                                            <td>
+                                                <div class="d-flex">
+
+
+
+                                                    <a href="{{ path('categorie_m_edit', {'id': categorie_m.id}) }}" class="btn btn-rounded btn-outline-danger">Modifier</a>
+
+
+                                                </div>
+
+
+                                            </td>
+                                            </tr>
+
+
+                                    {% endfor %}
+                                    </tbody>
+
+
+                                </table>
+                                <div class="navigation">
+                                 {#    {{ knp_pagination_render(utilisateurs,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+                                 #}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+{% endblock %}

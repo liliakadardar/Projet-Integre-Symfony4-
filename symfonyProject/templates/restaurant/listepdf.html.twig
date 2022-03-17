@@ -1,0 +1,43 @@
+
+
+
+    
+   
+
+
+
+        
+		<center> <h4>Liste Des Restaurants </h4> </center>
+	    	
+    <br>
+    <br>
+    <br>
+       
+      
+                         <center>           <table border="5">
+                                        <thead>
+                                            <tr>
+                                                
+                                                <th>Nom du restaurant</th>
+                                                <th>Numéro</th>
+                                                <th>Horraire d'ouverture</th>
+                                                <th>Horraire d'fermeture</th>
+                                              
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for restaurant in restaurants %}
+                                            <tr>
+                                               
+                                                <td>{{ restaurant.nomResto }}</td>
+                                                <td>{{ restaurant.numTel }}</td>
+                                                <td>{{ restaurant.horraireOuverture ? restaurant.horraireOuverture|date('d/m/y H:m') : '' }}</td>
+                                                <td>{{ restaurant.horraireFermeture ? restaurant.horraireFermeture|date('d/m/y H:m') : '' }}</td>
+                                                
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                    </center>
+                     
+

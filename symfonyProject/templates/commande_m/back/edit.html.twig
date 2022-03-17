@@ -1,0 +1,62 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Edit Commande Materiel{% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Commande Materiel</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Modifier Commande Materiel</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                            <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <div class="form-group">
+                                                <label class="text-label">date creation</label>
+                                                {{ form_widget(form.date_creation,{'attr':{ 'class':'form-control input-default' ,'placeholder':'Date'}}) }}
+                                                {{ form_errors(form.date_creation) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label">ADDRESS</label>
+                                                {{ form_widget(form.address_destination,{'attr':{'class':'form-control input-default', 'placeholder':'Address'}}) }}
+                                                {{ form_errors(form.address_destination) }}
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-label">Quantite</label>
+                                                {{ form_widget(form.quantite,{'attr':{'class':'form-control input-default', 'placeholder':'Quantite'}}) }}
+                                                {{ form_errors(form.quantite) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{ form(form.modifier, {'button_label': 'Update', 'class':'btn btn-rounded btn-outline-warning'}) }}
+                   {#  {{ include('commande_m/back/_form.html.twig', {'button_label': 'Update', 'class':'btn btn-rounded btn-outline-warning'}) }}#}
+                    {{ form_end(form) }}
+                    <a type="button" href="{{ path('commande_m_index_admin') }}"  class="btn btn-rounded btn-outline-warning">back to list</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+{# {{ include('commande_m/back/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('commande_m_index_admin') }}">back to list</a>
+
+    {{ include('commande_m/back/_delete_form.html.twig') }} #}
+{% endblock %}

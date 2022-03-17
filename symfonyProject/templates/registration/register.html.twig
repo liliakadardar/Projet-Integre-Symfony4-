@@ -39,7 +39,11 @@
 
 {% endblock %}
 
+
+
 {% block body %}
+
+
     {% for flashError in app.flashes('verify_email_error') %}
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
@@ -105,10 +109,17 @@
                     </div>
 
 
-                    <div class=" mb-3 nicdark_focus nicdark_relative nicdark ">
-                        {{ form_errors(registrationForm.agreeTerms)}}
+                    <div>
+                        {{ form_widget(registrationForm.captcha,{'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey  grey large subtitle', 'placeholder':'Veuilliez saisir le code suivant'}}  ) }}
+                    </div>
+                    <div></div>  <div></div>  <div></div>
+                    <div></div>
 
-                        {{ form_widget(registrationForm.agreeTerms, {'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey   grey small subtitle'}})}}
+                    <div class=" mb-3 nicdark_focus nicdark_relative nicdark ">
+
+                       {{ form_errors(registrationForm.agreeTerms)}}
+
+                        {{ form_widget(registrationForm.agreeTerms)}}
                         <span class="focus-input100">
                     </span>
                     </div>

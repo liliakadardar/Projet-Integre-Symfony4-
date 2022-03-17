@@ -1,0 +1,111 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Listes des restaurants{% endblock %}
+
+
+{% block body %}
+
+<div class="content-body">
+    <div class="container-fluid">
+        <div class="page-titles">
+			<h4>La liste des restaurants</h4>
+	    	<ol class="breadcrumb">
+				<li class="breadcrumb-item active"><a href="{{ path('restaurant_new') }}">Ajouter un restaurant</a></li>
+			</ol>
+        </div>
+         <form method="post" action="{{ path('tri') }}">
+        <label>
+            <select class="form-control" name="type">
+                <option>Croissant</option>
+                <option>Décroissant</option>
+            </select>
+        </label>
+        <input type="submit" class="btn btn-success" value="Trier Nom">
+    </form>
+        <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover table-responsive-sm">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-center">image</th>
+                                                <th class="text-center">Nom du restaurant</th>
+                                                <th class="text-center">Numéro</th>
+                                                <th class="text-center">Horraire d'ouverture</th>
+                                                <th class="text-center">Horraire d'fermeture</th>
+                                                <th class="text-center">Modifier</th>
+                                                <th class="text-center">Supprimer</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for restaurant in restaurants %}
+                                            <tr>
+                                                <td class="text-center"><img style="width:100px;height:100px;" src="{{ asset('uploads/image/' ~ restaurant.image) }}" class="img-fluid rounded-circle" alt=""></td>
+                                                <td class="text-center">{{ restaurant.nomResto }}</td>
+                                                <td class="text-center">{{ restaurant.numTel }}</td>
+                                                <td class="text-center">{{ restaurant.horraireOuverture ? restaurant.horraireOuverture|date('d/m/y H:m') : '' }}</td>
+                                                <td class="text-center">{{ restaurant.horraireFermeture ? restaurant.horraireFermeture|date('d/m/y H:m') : '' }}</td>
+                                                <td class="text-center"><a type="button" href="{{ path('restaurant_edit', {'id': restaurant.id}) }}" class="btn btn-rounded btn-outline-warning">Modifier</a></td>
+                                                <td class="text-center"><a type="button" href="{{ path('restaurant_delete', {'id': restaurant.id}) }}" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                            </tr>
+                                           
+                                        {% endfor %}
+                                         <ol class="breadcrumb">
+			                             	<li class="breadcrumb-item active"><a href="{{ path('rest_pdf') }}" class="btn btn-success">Exporter</a></li>
+		                                	</ol>
+                                        </tbody>
+                                    </table>
+                                
+                                </div>
+                            </div>
+                        </div>
+                       
+
+ 
+                        <!-- /# card -->
+                    </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<script src="/BACK/vendor/global/global.min.js"></script>
+<script src="/BACK/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="/BACK/vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="/BACK/js/custom.min.js"></script>
+<script src="/BACK/js/deznav-init.js"></script>
+<script src="/BACK/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="/BACK/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Chart piety plugin files -->
+<script src="/BACK/vendor/peity/jquery.peity.min.js"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+
+
+<!-- Apex Chart -->
+<script src="/BACK/vendor/apexchart/apexchart.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- Dashboard 1 -->
+<script src="/BACK/js/dashboard/dashboard-1.js"></script>
+
+<script>
+toastr.options = {
+  
+  "positionClass": "toast-bottom-left"
+  
+}
+{% if msg is defined %}
+    {% if msg != "" %}
+    var currenturl = new URL(window.location);
+    console.log(currenturl);
+    currenturl.searchParams.delete("actions");
+    window.history.replaceState({}, "", currenturl);
+    toastr.info("{{msg}}");
+    {% endif %}
+{% endif %}
+</script>
+
+{% endblock %}

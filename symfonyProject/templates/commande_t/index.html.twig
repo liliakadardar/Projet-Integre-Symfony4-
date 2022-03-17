@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="nicdark_site">
+        <div class="nicdark_site_fullwidth nicdark_site_fullwidth_boxed nicdark_clearfix">
+
+
+            <!--start section-->
+            <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img7"
+                     style="background-position: 50% 0px;">
+
+                <div class="nicdark_filter">
+
+                    <!--start nicdark_container-->
+                    <div class="nicdark_container nicdark_clearfix">
+
+                        <div class="nicdark_space100"></div>
+                        <div class="nicdark_space100"></div>
+
+                        <div class="nicdark_space70"></div> <!--for header 1-->
+
+                        <div class="grid grid_6">
+                            <h1 class="white subtitle">Liste commande des Transports</h1>
+                        </div>
+
+                        <div class="nicdark_space40"></div>
+                        <div class="nicdark_space40"></div>
+
+                    </div>
+                    <!--end nicdark_container-->
+
+                </div>
+
+            </section>
+            <!--end section-->
+
+
+            <!--start section-->
+            <section class="nicdark_section">
+
+                <!--start nicdark_container-->
+                <div class="nicdark_container nicdark_clearfix">
+
+                    <div class="nicdark_space40"></div>
+
+                    <div class="grid grid_12">
+
+                        <div class="nicdark_textevidence  left overflow_scroll">
+                            <table class="nicdark_table extrabig nicdark_bg_blue ">
+                                <thead class="nicdark_border_orange">
+                                <tr>
+                                    <td class="nicdark_width_percentage1"><h4 class="white"></h4></td>
+                                    <td class="nicdark_width_percentage1"><h4 class="white"></h4></td>
+                                    <td><h4 class="white">Id</h4></td>
+                                    <td><h4 class="white">Date Commande</h4></td>
+                                    <td><h4 class="white">Adresse destination</h4></td>
+                                    <td><h4 class="white">Actions</h4></td>
+                                </tr>
+                                </thead>
+                                <tbody class="nicdark_bg_white nicdark_border_grey">
+                                {% for commande_t in commande_ts %}
+                                    <tr>
+                                        <td><h1><a href="{{ path('commande_t_delete', {'id': commande_t.id}) }}"><i class="icon-cancel-circled-1 red"></i></a></h1></td>
+                                        <td><img alt="" class=" nicdark_opacity" src="BACK/img/shop/img1.jpg" width="70"></td>
+                                        <td><p>{{ commande_t.id }}</p></td>
+                                        <td><p>{{ commande_t.dateCreation ? commande_t.dateCreation|date('Y-m-d H:i:s') : '' }}</p></td>
+                                        <td><p>{{ commande_t.addressDestination }}</p></td>
+                                        <td>
+                                            {#  <a href="{{ path('commande_e_show', {'id': commande_m.id}) }}" class="nicdark_btn_icon nicdark_bg_green small _circle white">show</a>#}
+                                            <a href="{{ path('commande_t_edit', {'id': commande_t.id}) }}" class="nicdark_btn_icon nicdark_bg_red small _circle white">Modifier</a>
+
+
+
+                                        </td>
+
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="4">no records found</td>
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="nicdark_space20"></div>
+
+
+                </div>
+                <!--end nicdark_container-->
+
+                <div class="nicdark_space50"></div>
+
+            </section>
+            <!--end section-->
+
+
+            <!--end-->
+
+            <!--<div class="nicdark_space3 nicdark_bg_gradient"></div>-->
+        </div></div>
+    </div>
+    </div>
+
+{% endblock %}

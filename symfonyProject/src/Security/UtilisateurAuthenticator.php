@@ -99,7 +99,7 @@ class UtilisateurAuthenticator extends AbstractFormLoginAuthenticator implements
             return new RedirectResponse($this->urlGenerator->generate('admin'));
         }
 
-      return new RedirectResponse($this->urlGenerator->generate('accueil'));
+      return new RedirectResponse($this->urlGenerator->generate('evenement_index'));
 
     }
 

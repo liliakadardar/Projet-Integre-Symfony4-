@@ -1,7 +1,6 @@
+
+
 {% extends 'base-back.html.twig' %}
-
-
-
 
 {% block body %}
 <div class="content-body">
@@ -44,14 +43,19 @@
 
 
 
-                     </div>
+                                  </div>
+
+
+                                <div class="col-lg-6 mb-2">
+                                    <div class="form-group">
+                                        <label class="text-label">lieu_arrivee</label>
+                                        {{ form_errors(form.lieu_arrivee) }}
+                                        {{ form_widget(form.lieu_arrivee, {'attr':{'class':'nicdark_bg_grey nicdark_border_grey   grey small subtitle', 'placeholder':'Lieu arrivee'}})}}
+                                    </div>
 
 
 
-
-
-
-
+                                </div>
 
 
 

@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="nicdark_site">
+        <div class="nicdark_site_fullwidth nicdark_site_fullwidth_boxed nicdark_clearfix">
+
+
+            <!--start section-->
+            <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img7"
+                     style="background-position: 50% 0px;">
+
+                <div class="nicdark_filter">
+
+                    <!--start nicdark_container-->
+                    <div class="nicdark_container nicdark_clearfix">
+
+                        <div class="nicdark_space100"></div>
+                        <div class="nicdark_space100"></div>
+
+                        <div class="nicdark_space70"></div> <!--for header 1-->
+
+                        <div class="grid grid_6">
+                            <h1 class="white subtitle">Confirmer Commande Transports</h1>
+                        </div>
+
+                        <div class="nicdark_space40"></div>
+                        <div class="nicdark_space40"></div>
+
+                    </div>
+                    <!--end nicdark_container-->
+
+                </div>
+
+            </section>
+            <!--end section-->
+
+
+            <!--start section-->
+            <section class="nicdark_section">
+
+                <div class="grid grid_6">
+                    <div class="nicdark_archive1 nicdark_bg_white nicdark_border_grey nicdark_sizing  ">
+                        <div class="nicdark_textevidence nicdark_bg_orange">
+                            <h4 class="white nicdark_margin20">Commander Transports</h4>
+                        </div>
+                        {{ form_start(form) }}
+                        <div class="nicdark_margin20">
+
+                            <div class="nicdark_space5"></div>
+
+                            {{ form_label(form.date_creation)}}
+
+                            {{ form_errors(form.date_creation)}}
+                            {{ form_widget(form.date_creation,{'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey  grey small subtitle'}}) }}
+                            <div class="nicdark_space20"></div>
+
+                            <div class="nicdark_space5"></div>
+                            {{ form_errors(form.address_destination)}}
+                            {{ form_widget(form.address_destination,{'attr':{'class':'form-control nicdark_bg_grey nicdark_border_grey  grey small subtitle', 'placeholder':'Adresse destination'}}) }}
+
+                            {{ form_row(form.save,{'attr':{'class':"nicdark_btn_icon nicdark_bg_green small _circle white"}}) }}
+
+                        </div>
+                        {{ form_end(form) }}
+
+                    </div>
+
+                </div>
+            </section>
+            <!--end section-->
+
+
+            <!--end-->
+
+            <!--<div class="nicdark_space3 nicdark_bg_gradient"></div>-->
+        </div></div>
+    </div>
+    </div>
+
+{% endblock %}

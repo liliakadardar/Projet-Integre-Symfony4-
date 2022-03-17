@@ -1,0 +1,114 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Listes des restaurants{% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>La liste des regions</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item active"><a href="{{ path('ajouterregion') }}">Ajouter une region</a></li>
+                </ol>
+
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+                            <table class="table table-hover table-responsive-sm">
+                                <thead>
+                                <tr>
+
+                                    <th class="text-center">Nom de la region</th>
+                                    <th class="text-center">image</th>
+
+
+                                    <th class="text-center">Supprimer</th>
+                                    <th class="text-center">Modifier</th>
+                                </tr>
+                                </thead>
+                                <tbody id="myTable">
+                                {% for i in region %}
+                                    <tr>
+                                        <td class="text-center">{{ i.nomregion }}</td>
+                                        <td class="text-center"><img style="width:100px;height:100px;" src="{{ asset('uploads/region/' ~ i.image) }}" class="img-fluid rounded-circle" alt=""></td>
+
+
+
+                                        <td class="text-center"><a type="button" href="{{ path('supprimerregion', {'id': i.id}) }}" class="btn btn-rounded btn-outline-danger">Supprimer</a></td>
+                                        <td class="text-center"><a type="button" href="{{ path('modifierregion', {'id': i.id}) }}" class="btn btn-rounded btn-outline-warning">Modifier</a></td>
+
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                            <div class="navigation">
+                                                {{ knp_pagination_render(region,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+                                                
+                                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{% block js %}
+<script src="{{ asset('bundles/mercuryseriesflashy/js/flashy.js') }}"></script>
+<script src="/BACK/vendor/global/global.min.js"></script>
+<script src="/BACK/vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="/BACK/vendor/chart.js/Chart.bundle.min.js"></script>
+<script src="/BACK/js/custom.min.js"></script>
+<script src="/BACK/js/deznav-init.js"></script>
+<script src="/BACK/vendor/bootstrap-datetimepicker/js/moment.js"></script>
+<script src="/BACK/vendor/bootstrap-datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Chart piety plugin files -->
+<script src="/BACK/vendor/peity/jquery.peity.min.js"></script>
+<script src="//code.jquery.com/jquery.js"></script>
+
+
+<!-- Apex Chart -->
+<script src="/BACK/vendor/apexchart/apexchart.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+<!-- Dashboard 1 -->
+<script src="/BACK/js/dashboard/dashboard-1.js"></script>
+
+<script>
+toastr.options = {
+  
+  "positionClass": "toast-bottom-left"
+  
+}
+{% if msg != "" %}
+    var currenturl = new URL(window.location);
+    console.log(currenturl);
+    currenturl.searchParams.delete("actions");
+    window.history.replaceState({}, "", currenturl);
+    toastr.info("{{msg}}");
+{% endif %}
+</script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
+
+
+{% endblock %}

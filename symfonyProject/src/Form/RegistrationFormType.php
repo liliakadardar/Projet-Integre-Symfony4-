@@ -13,6 +13,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 
 class RegistrationFormType extends AbstractType
@@ -36,10 +37,11 @@ class RegistrationFormType extends AbstractType
                 'required' => false,
                     ])
             ->add('agreeTerms', CheckboxType::class, [
+
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
-                        'message' => ' Accepter les termes.',
+                        'message' => 'Veuilliez accepter les termes.',
 
                     ]),
                 ],
@@ -61,6 +63,11 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
+            ->add('captcha', CaptchaType::class, array(
+                'width' => 200,
+                'height' => 100,
+                'length' => 6,
+            ));
         ;
     }
 

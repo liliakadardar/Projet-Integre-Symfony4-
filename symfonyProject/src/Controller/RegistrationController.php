@@ -51,6 +51,8 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+
             // encode the plain password
             $user->setPassword(
             $userPasswordEncoder->encodePassword(
@@ -108,6 +110,8 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main' // firewall name in security.yaml
             );*/
+            $this->addFlash('success', 'Inscription avec succés! Un lien de confirmation vous a été envoyer');
+            return $this->redirectToRoute('app_register');
         }
 
         return $this->render('registration/register.html.twig', [

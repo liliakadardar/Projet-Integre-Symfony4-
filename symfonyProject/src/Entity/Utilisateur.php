@@ -97,10 +97,16 @@ class Utilisateur implements UserInterface
      */
     private $received;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Commande::class, mappedBy="utilisateur")
+     */
+    private $commande;
+
     public function __construct()
     {
         $this->sent = new ArrayCollection();
         $this->received = new ArrayCollection();
+        $this->commande = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -314,6 +320,36 @@ class Utilisateur implements UserInterface
             // set the owning side to null (unless already changed)
             if ($received->getRecipient() === $this) {
                 $received->setRecipient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, commande>
+     */
+    public function getCommande(): Collection
+    {
+        return $this->commande;
+    }
+
+    public function addCommande(commande $commande): self
+    {
+        if (!$this->commande->contains($commande)) {
+            $this->commande[] = $commande;
+            $commande->setUtilisateur($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommande(commande $commande): self
+    {
+        if ($this->commande->removeElement($commande)) {
+            // set the owning side to null (unless already changed)
+            if ($commande->getUtilisateur() === $this) {
+                $commande->setUtilisateur(null);
             }
         }
 

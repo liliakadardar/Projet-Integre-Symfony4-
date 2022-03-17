@@ -14,6 +14,9 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+
 /**
  * @Route("/utilisateur")
  */
@@ -55,7 +58,7 @@ class UtilisateurController extends AbstractController
     public function show(): Response
     {
         return $this->render('utilisateur/utilisateur.html.twig', [
-            'utilisateur' => $this->getUser(),
+            'utilisateur' => $this->getUser()
         ]);
     }
 
@@ -67,44 +70,21 @@ class UtilisateurController extends AbstractController
         $form = $this->createForm(UtilisateurType::class, $utilisateur);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()&& $form->isValid()) {
-            /** @var UploadedFile $imageFile */
-            $imageFile = $form->get('image')->getData();
-
-            // this condition is needed because the 'brochure' field is not required
-            // so the PDF file must be processed only when a file is uploaded
-            if ($imageFile) {
-                $originalFilename = pathinfo($imageFile->getClientOriginalName(), PATHINFO_FILENAME);
-                // this is needed to safely include the file name as part of the URL
-                //$safeFilename = $slugger->slug($originalFilename);
-                $safeFilename = $originalFilename;
-                $newFilename = $safeFilename.'-'.uniqid().'.'.$imageFile->guessExtension();
-
-                // Move the file to the directory where brochures are stored
-                try {
-                    $imageFile->move(
-                        $this->getParameter('image_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e) {
-                    // ... handle exception if something happens during file upload
-                }
-
-                // updates the 'brochureFilename' property to store the PDF file name
-                // instead of its contents
-                $utilisateur->setImage($newFilename);
-            }
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $form->get('image')->getData();
+            $filename = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move($this->getParameter('image_directory'),$filename);
+            $utilisateur->setImage($filename);
+            $entityManager->persist($utilisateur);
             $entityManager->flush();
-
             return $this->redirectToRoute('utilisateur_index', [], Response::HTTP_SEE_OTHER);
         }
-//else { dd($form);}
+
         return $this->render('utilisateur/edit.html.twig', [
             'utilisateur' => $this->getUser(),
             'form' => $form->createView(),
         ]);
     }
-
     /**
      * @Route("/{id}", name="utilisateur_delete", methods={"POST"})
      *
@@ -155,17 +135,22 @@ public function editPass(Request $request, UserPasswordEncoderInterface $passwor
     /**
      * @Route("/admin/utilisateurs", name="utilisateur_showALL", methods={"GET"})
      */
-    public function showALL(): Response
-    { $em = $this->getDoctrine()->getManager();
+
+    public function showALL(UtilisateurRepository $repository, PaginatorInterface $paginator,Request $request): Response
+    {
+        $utilisateurs=$repository->listUtilisateurTri();
+        $em = $this->getDoctrine()->getManager();
         $utilisateurs = $em->getRepository(Utilisateur::class)->findAll();
+
+        $utilisateurs = $paginator->paginate(
+            $utilisateurs,
+            $request->query->getInt('page', 1)/*page number*/,
+            $request->query->getInt('limit', 5)/*limit per page*/
+        );
         return $this->render('utilisateur/index.html.twig', [
             'utilisateurs' => $utilisateurs,
         ]);
     }
-
-
-
-
 
 
 

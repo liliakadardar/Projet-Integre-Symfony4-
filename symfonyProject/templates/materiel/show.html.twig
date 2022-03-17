@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Materiel{% endblock %}
+
+{% block body %}
+    <div class="nicdark_space100"></div>
+    <div class="nicdark_space80"></div>
+
+    <h1>Materiel</h1>
+    <table class="nicdark_table extrabig nicdark_bg_white " >
+        <thead  >
+          <tr>
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Prenom</th>
+            <th>Email</th>
+            <th>Numtel</th>
+            <th>Prix_m</th>
+            <th>Description</th>
+            <th>Nom materiel</th>
+            <th>Image</th>
+            <th>actions</th>
+          </tr>
+        </thead>
+
+        <tbody >
+            <tr>
+                <td >{{ materiel.id }}</td>
+                <td >{{ materiel.nom }}</td>
+                <td >{{ materiel.prenom }}</td>
+                <td >{{ materiel.email }}</td>
+                <td >{{ materiel.numtel }}</td>
+                <td>{{ materiel.prixM }}</td>
+                <td >{{ materiel.description }}</td>
+                <td >{{ materiel.nomMateriel }}</td>
+                <td ><img src="{{ asset('uploads/'~materiel.image ) }}"alt="" width="50px" height="50px"/></td>
+            <td > <a href="{{ path('materiel_index') }}" class="nicdark_bg_grey nicdark_border_grey   grey small subtitle">Retour à la liste </a>
+    <a href="{{ path('materiel_edit', {'id': materiel.id}) }}" class="nicdark_bg_grey nicdark_border_grey   grey small subtitle">Modifier</a> </td>
+            </tr>
+
+        </tbody>
+    </table>
+    {{ include('materiel/_delete_form.html.twig') }}
+
+        <div class="nicdark_space100"></div>
+{% endblock %}

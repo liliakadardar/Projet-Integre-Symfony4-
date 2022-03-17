@@ -22,26 +22,30 @@
             </div>
             <div class="card-body">
                 <div class="table-responsive">
-                    <table id="example3" class="display min-w850">
+                    <p style="100px" > <input  id="myInput"  type="text" placeholder="search">
+
+                    <table id="t" class="display min-w850  dataTable no-footer">
                         <thead>
                         <tr>
 
                             <th>Image</th>
 
                             <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Date_naissance</th>
+                            <th>Prénom</th>
+                            <th>Date Naissance</th>
                             <th>Email</th>
-                            <th>NumTel</th>
-                            <th>Action</th>
+                            <th>Téléphone</th>
+                            <th>Actions</th>
                         </tr>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="myTable">
 
                         {% for utilisateur in utilisateurs %}
 
-                            <td><img class="rounded-circle" width="35" src="{{ asset('uploads/image/' ~ utilisateur.image) }}" alt=""></td>
+                            {% if 'ROLE_ADMIN' not in utilisateur.roles  %}
+
+                                <td><img class="rounded-circle" width="35"style="width:100px;height:100px;" src="{{ asset('uploads/image/' ~ utilisateur.image) }}" alt=""></td>
 
                             <td>{{ utilisateur.nom }}</td>
                             <td>{{ utilisateur.prenom }}</td>
@@ -50,23 +54,53 @@
                             <td><a href="javascript:void(0);"><strong>{{ utilisateur.numTel }}</strong></a></td>
                             <td>
                                 <div class="d-flex">
+                                    {# {% if utilisateur.isverified == 1 %}
+                                        <a
+                                            href="{{ path ('desactiver-user', {'id' : utilisateur.id}) }}"
+                                            class="btn btn-primary shadow btn-xs" href="#">Bloquer</a>
+                                    {% else %}<a
+                                        href="{{ path ('activer-user', {'id' : utilisateur.id}) }}"
+                                        class="btn btn-pinterest " href="#">Débloquer</a> {% endif %}
+                                    #}
+
                                 <a href="{{ path('modifierUtilisateur', {'id': utilisateur.id}) }}" class="btn btn-primary shadow btn-xs sharp mr-1"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ path('delete_admin', {'id': utilisateur.id}) }}" class="btn btn-danger shadow btn-xs sharp"><i class="fa fa-trash"></i></a>
+
+
+                                <div class="dropdown ml-auto text-right">
+                                    <div class="btn-link" data-toggle="dropdown">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M12 11C11.4477 11 11 11.4477 11 12C11 12.5523 11.4477 13 12 13C12.5523 13 13 12.5523 13 12C13 11.4477 12.5523 11 12 11Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M12 18C11.4477 18 11 18.4477 11 19C11 19.5523 11.4477 20 12 20C12.5523 20 13 19.5523 13 19C13 18.4477 12.5523 18 12 18Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M12 4C11.4477 4 11 4.44772 11 5C11 5.55228 11.4477 6 12 6C12.5523 6 13 5.55228 13 5C13 4.44772 12.5523 4 12 4Z" stroke="#2E2E2E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </div>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                {% if utilisateur.isverified == 1 %}
+                                        <a class="dropdown-item"  href="{{ path ('desactiver-user', {'id' : utilisateur.id}) }}">Bloquer</a>
+                                    {% else %}
+                                        <a class="dropdown-item"  href="{{ path ('activer-user', {'id' : utilisateur.id}) }}">Debloquer</a>
+                            {% endif %}
+                                    </div>
                                 </div>
+
+                                </div>
+
+
                             </td>
                         </tr>
 
-                        {% else %}
-                            <tr>
-                                <td colspan="11">aucune liste n'a été trouvé</td>
-                            </tr>
 
-                        {% endfor %}
+                            {% endif %}
+                       {% endfor %}
                         </tbody>
 
 
                     </table>
+                    <div class="navigation">
+                        {{ knp_pagination_render(utilisateurs,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
 
+                    </div>
                 </div>
             </div>
         </div>
@@ -74,4 +108,16 @@
         </div>
     </div>
 </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#myInput").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+    </script>
+
 {% endblock %}

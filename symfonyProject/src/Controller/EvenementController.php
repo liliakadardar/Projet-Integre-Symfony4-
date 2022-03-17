@@ -13,9 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Constraints\File;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
- * @Route("/evenement")
+ * @Route("/")
  */
 class EvenementController extends AbstractController
 {
@@ -30,6 +31,7 @@ class EvenementController extends AbstractController
     }
 
     /**
+     * @IsGranted ("ROLE_USER")
      * @Route("/new", name="evenement_new", methods={"GET", "POST"})
      */
 
@@ -183,6 +185,7 @@ class EvenementController extends AbstractController
 
 
     /**
+     * @IsGranted ("ROLE_USER")
      * @Route("/{id}/edit", name="evenement_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Evenement $evenement, EntityManagerInterface $entityManager): Response
@@ -306,6 +309,18 @@ class EvenementController extends AbstractController
     }
 
 
+
+    /**
+     * @Route("/{id}/editRating/{rating}", name="evenement_rating")
+     */
+    public function editRating(Request $request, Evenement $evenement, EntityManagerInterface $entityManager, int $rating): Response
+    {
+        $evenement->setRating($rating);
+        $entityManager->persist($evenement);
+        $entityManager->flush();
+
+        return new Response("1");
+    }
 
     /**
      * @Route("/delete/{id}", name="evenement_delete_back", methods={"POST"})

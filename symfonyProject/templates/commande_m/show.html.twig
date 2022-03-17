@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeM{% endblock %}
+
+{% block body %}
+<div class="grid grid_12">
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space50"></div>
+    <div class="nicdark_space30"></div>
+    <h1>CommandeM</h1>
+
+    <table  class="table">
+        <tbody class="nicdark_border_yellow">
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_m.id }}</td>
+            </tr>
+            <tr>
+                <th>Date_creation</th>
+                <td>{{ commande_m.dateCreation ? commande_m.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Address_destination</th>
+                <td>{{ commande_m.addressDestination }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ commande_m.total }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ commande_m.Quantite }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_m_index') }}">back to list</a>
+
+    <a href="{{ path('commande_m_edit', {'id': commande_m.id}) }}">edit</a>
+</div>
+
+
+{% endblock %}

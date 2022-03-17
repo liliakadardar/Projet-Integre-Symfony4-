@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <!--start section-->
+    <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img5">
+
+        <div class="nicdark_filter greydark">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space100"></div>
+                <div class="nicdark_space100"></div>
+
+                <div class="nicdark_space70"></div> <!--for header 1-->
+
+                <div class="grid grid_6">
+                    <h1 class="white subtitle">Restauration</h1>
+                </div>
+                <div class="grid grid_6 nicdark_displaynone_responsive">
+                    <div class="nicdark_space5"></div>
+                    <h4 class="white right subtitle"><a class="white" href="index.html">Accueil</a> <span class="nicdark_marginleft10 nicdark_marginright10 grey2">|</span> les Restaurants</h4>
+                </div>
+
+                <div class="nicdark_space40"></div>
+                <div class="nicdark_space40"></div>
+
+            </div>
+            <!--end nicdark_container-->
+
+        </div>
+
+    </section>
+    <!--end section-->
+
+    <section class="nicdark_section">
+
+        <!--start nicdark_container-->
+        <div class="nicdark_container nicdark_clearfix">
+
+            <div class="nicdark_space40"></div>
+
+
+            <!--start form-->
+            <form class="w-search" method="get">
+        <div class="sidebar-search">
+
+            <div class="input-group custom-search-form">
+
+                <input type="text" id="search" name="q" class="form-control pl-3" placeholder="chercher ici">
+                
+                <a href="{{ path('restaurant_index_front') }}" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_bg_blue left  medium white " >Liste de  tous les restraurants</a>
+
+
+            </div>
+            <!-- /input-group -->
+        </div>
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="#"><span class="fa arrow"></span></a>
+                <ul class="nav " id="entitiesNav">
+                </ul>
+            </li>
+        </ul>
+
+
+
+    </form>
+            <!--end form-->
+
+            {% for i in tableregions %}
+                <div class="grid grid_4">
+
+                    <!--start accomodation-->
+                    <div class="nicdark_focus">
+                        <img alt="" class="nicdark_width_percentage100" src="{{ asset('uploads/region/' ~ i.image) }}">
+
+                        <!--title e descr-->
+                        <center>
+                            <div class="nicdark_margin020 nicdark_border_bottom_none nicdark_padding20 nicdark_border_grey nicdark_relative nicdark_sizing nicdark_bg_white nicdark_margintop55_negative">
+                                <h4>Nom : {{ i.nomregion }}</h4>
+                                <div class="nicdark_space20"></div>
+
+                            </div>
+                        </center>
+                        <!--end title e descr-->
+
+                        <!--icons-->
+                        {# <div class="nicdark_focus nicdark_padding020  nicdark_border_grey nicdark_sizing nicdark_bg_grey">
+                    <a title="Lorem" class=" nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey  nicdark_marginleft0"><i class="greydark nicdark_marginright10 icon-rss"></i> Wifi</a>
+                    <a title="Lorem" class="nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-snow"></i> Yes</a>
+                    <a title="Lorem" class=" nicdark_border_right_grey nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-medkit"></i> 24 h</a>
+                    <a title="Lorem" class=" nicdark_bg_grey_hover nicdark_tooltip nicdark_transition nicdark_btn_icon  small grey "><i class="greydark nicdark_marginright10 icon-users"></i> 4</a>
+                </div> #}
+                        <!--end icons-->
+
+                        <!--btns-->
+                        <div class="nicdark_paddingtop0 nicdark_focus nicdark_sizing nicdark_padding20  nicdark_relative nicdark_sizing nicdark_bg_white ">
+                            <div class="nicdark_border_top_none nicdark_focus nicdark_padding20 nicdark_sizing nicdark_border_grey ">
+                                <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+
+                                    <a href="{{ path('get_restaurants', {id:i.id}) }}" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_bg_blue left  medium white " >la liste des restaurants disponibles</a>
+                                </div>
+                                {# <div class="grid grid_6 percentage nicdark_width100_ipadpotr">
+                            <a href="#" class="nicdark_width100_ipadpotr nicdark_width100_iphonepotr nicdark_width100_iphoneland  nicdark_sizing nicdark_btn nicdark_border_grey nicdark_bg_white right medium grey">From 200 $</a>
+                        </div> #}
+                            </div>
+                        </div>
+                        <!--end btns-->
+
+                    </div>
+                    <!--end accomodation-->
+
+                </div>
+            {% endfor %}
+
+
+        </div>
+        <!--end container-->
+
+    </section>
+
+{% endblock %}

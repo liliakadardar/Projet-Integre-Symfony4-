@@ -13,6 +13,10 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Knp\Bundle\PaginatorBundle\KnpPaginatorBundle;
+use Knp\Component\Pager\PaginatorInterface;
+
+
 
 class CategorieTController extends AbstractController
 {
@@ -29,8 +33,13 @@ class CategorieTController extends AbstractController
     /**
      * @Route("/affichercategorietadmin",name="affichercategorie")
      */
-    public function afficherRegions(CategorieTRepository $repository){
+    public function afficherRegions(CategorieTRepository $repository,Request $request, PaginatorInterface $paginator){
         $categorie=$repository->listCategorieParType();
+        $categorie = $paginator->paginate(
+            $categorie,
+            $request->query->getInt('page', 1)/*page number*/,
+            $request->query->getInt('limit', 3)/*limit per page*/
+        );
         return $this->render('categorie_t/affichercategorie.html.twig'
             ,['tablecategorie'=>$categorie]);
 

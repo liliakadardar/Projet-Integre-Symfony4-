@@ -1,0 +1,113 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="nicdark_site">
+    <div class="nicdark_site_fullwidth nicdark_site_fullwidth_boxed nicdark_clearfix">
+
+
+
+
+        <!--start section-->
+        <section id="nicdark_parallax_title" class="nicdark_section nicdark_imgparallax nicdark_parallaxx_img7" style="background-position: 50% 0px;">
+
+            <div class="nicdark_filter">
+
+                <!--start nicdark_container-->
+                <div class="nicdark_container nicdark_clearfix">
+
+                    <div class="nicdark_space100"></div>
+                    <div class="nicdark_space100"></div>
+
+                    <div class="nicdark_space70"></div> <!--for header 1-->
+
+                    <div class="grid grid_6">
+                        <h1 class="white subtitle">MAGASIN</h1>
+                    </div>
+
+
+                    <div class="nicdark_space40"></div>
+                    <div class="nicdark_space40"></div>
+
+                </div>
+                <!--end nicdark_container-->
+
+            </div>
+
+        </section>
+        <!--end section-->
+
+
+
+        <!-- archive shop start -->
+        <!--start section-->
+        <section class="nicdark_section">
+
+            <!--start nicdark_container-->
+            <div class="nicdark_container nicdark_clearfix">
+
+                <div class="nicdark_space50"></div>
+
+                <div class="grid grid_3">
+
+
+                </div>
+                {% for materiel in materiels %}
+                <div class="grid grid_3">
+
+                    <!-- start product-->
+                    <div class="nicdark_archive1 nicdark_border_grey nicdark_sizing  ">
+
+
+
+                        <img src="{{ asset('uploads/'~materiel.image ) }}"alt="" width="50px" height="50px"/>
+
+                        <div class="nicdark_textevidence nicdark_bg_greydark">
+                            <h4 class="white nicdark_margin20">{{ materiel.nomMateriel}}</h4>
+                        </div>
+
+
+                        <div class="nicdark_textevidence">
+                            <div class="nicdark_margin20">
+                                <p>{{ materiel.prixM }} DT</p>
+                                <div class="nicdark_space20"></div>
+                                <a href="{{ path('commande_m_new', {'id': materiel.id})  }}" class="grey nicdark_btn nicdark_bg_grey nicdark_border_grey  medium   nicdark_press"><i class="icon-basket"></i>&nbsp;&nbsp;&nbsp;Acheter</a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- end product-->
+                </div>
+                {% endfor %}
+
+
+
+
+
+
+            </div>
+            <!--end nicdark_container-->
+            {{ knp_pagination_render(materiels,'@KnpPaginator/Pagination/twitter_bootstrap_v4_pagination.html.twig',{'rounded': true,'size': 'small' }) }}
+
+    </div>
+        </section>
+        <!--end section-->
+
+
+
+
+
+
+        <!-- archive shop end -->
+
+        <!--end-->
+
+        <!--<div class="nicdark_space3 nicdark_bg_gradient"></div>-->
+
+
+
+       </div>
+</div>
+
+{% endblock %}

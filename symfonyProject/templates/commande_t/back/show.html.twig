@@ -1,0 +1,47 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Commande Transport{% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Commande Transport</h4>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover table-responsive-sm">
+                                <tbody>
+                                <tr>
+                                    <th class="text-center">Id</th>
+                                    <td class="text-center">{{ commande_t.id }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Date_creation</th>
+                                    <td class="text-center">{{ commande_t.dateCreation ? commande_t.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center">Address_destination</th>
+                                    <td class="text-center">{{ commande_t.addressDestination }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <a type="button" href="{{ path('commande_t_index_admin') }}" class="btn btn-rounded btn-outline-warning">back to list</a>
+
+                            <a type="button" href="{{ path('commande_t_edit_admin', {'id': commande_t.id}) }}" class="btn btn-rounded btn-outline-warning">edit</a>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /# card -->
+            </div>
+        </div>
+    </div>
+    {#  <a href="{{ path('commande_t_index') }}">back to list</a>
+
+    <a href="{{ path('commande_t_edit', {'id': commande_t.id}) }}">edit</a>
+
+    {{ include('commande_t/_delete_form.html.twig') }}#}
+{% endblock %}

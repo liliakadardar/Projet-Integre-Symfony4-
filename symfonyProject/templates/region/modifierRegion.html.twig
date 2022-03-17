@@ -1,0 +1,65 @@
+{% extends 'base-back.html.twig' %}
+
+
+{% block title %}Ajouter une nouvelle region {% endblock %}
+
+{% block body %}
+    <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+                <h4>Region</h4>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Accueil</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Modifier  une region</a></li>
+                </ol>
+            </div>
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">gestion des regions</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="basic-form">
+                            {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                            <div id="wizard_Service" class="tab-pane" role="tabpanel">
+                                <div class="row">
+                                    <div class="col-lg-6 mb-2">
+                                        <div class="form-group">
+                                            <label class="text-label">Nom de la region</label>
+                                            {{ form_widget(form.nomregion,{'attr':{'class': 'form-control','placeholder':'nom de la region' }}) }}
+                                            {{ form_errors(form.nomregion) }}
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                </div>
+
+
+
+
+                            </div>
+                        </div>
+                        <img style="width:100px;height:100px;" src="{{ asset('uploads/region/' ~ image) }}" class="img-fluid rounded-circle" alt="">
+
+                        {{ form_widget(form.image,{'attr':{'class': 'btn mr-2 btn-success' }}) }}
+
+
+
+                        <button type="submit" class="btn mr-2 btn-primary">Modifier</button>
+                
+                        
+                        {{ form_end(form) }}
+                        <a href="{{ path('afficherregion') }}"><button type="submit" class="btn mr-2 btn-primary">Annuler</button></a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}

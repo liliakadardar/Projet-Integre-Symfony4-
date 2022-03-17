@@ -1,0 +1,89 @@
+  
+ {% extends 'base-back.html.twig' %}
+ {%block body %}
+ <div class="content-body">
+        <div class="container-fluid">
+            <div class="page-titles">
+ <!doctype html>
+     <html lang="en">
+     <center>
+     <head>
+         <meta charset="UTF-8">
+         <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+         <meta name="viewport"
+               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+         <title>Document</title>
+     </head>
+     <body>
+
+     <div style="width: 75%">
+         <canvas id="myChart"></canvas>
+     </div>
+     {% set nbariana=0%}
+     {% set nbtouzer=0%}
+     {% set nbsousse=0%}
+     {% set nbaindrahem=0%}
+     
+    
+     {% for f in Reg %}
+
+
+         {% if 'ariana' == f.idregion %}
+             {% set  nbariana=nbariana+1 %}
+
+         {%endif %}
+
+         {% if 'Touzer' ==  f.idregion %}
+             {% set  nbtouzer=nbtouzer+1 %}
+         {%endif %}
+
+         {% if 'sousse' ==  f.idregion %}
+             {% set  nbsousse=nbsousse+1 %}
+         {%endif %}
+
+         {% if 'Ain Drahem' ==  f.idregion %}
+             {% set nbaindrahem=nbaindrahem+1 %}
+         {%endif %}
+     {% endfor %}
+
+     <script>
+         Chart.defaults.global.title.display=true;
+     </script>
+
+     <script language="javascript">
+         var ctx = document.getElementById('myChart').getContext('2d');
+         var chart = new Chart(ctx, {
+             // The type of chart we want to create
+             type: 'line',
+
+             // The data for our dataset
+             data: {
+                 labels: ['','ariana','Touzer', 'sousse', 'Ain Drahem'],
+                 datasets: [{
+                     label: 'Nombres Totales des Restaurants: {{Reg|length}}',
+                     backgroundColor: 'rgb(255, 99, 132)',
+                     borderColor: 'rgb(255, 99, 101)',
+                     data: [0,{{nbariana}},{{nbtouzer}}, {{nbsousse}}, {{nbaindrahem}}]
+                 }]
+             },
+
+             // Configuration options go here
+             options: {
+                 title:{
+
+                     text:"Listes des restaurant"
+                 }
+
+             }
+         });
+     </script>
+
+
+
+
+     </body>
+     </center>
+     </html>   
+{% endblock %}

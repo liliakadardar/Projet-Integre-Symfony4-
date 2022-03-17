@@ -23,8 +23,16 @@
         <link rel="stylesheet" href="{{ asset('FRONT/css/nicdark_style.css') }}">
         <link rel="stylesheet" href="{{ asset('FRONT/css/nicdark_responsive.css') }}">
         <link rel="stylesheet" href="{{ asset('FRONT/css/revslider/settings.css') }}">
-    {% endblock %}
 
+        <link href="/BACK/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="/BACK/vendor/chartist/css/chartist.min.css">
+        <link href="/BACK/vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
+        <link href="/BACK/vendor/bootstrap-datetimepicker/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+        <link href="/BACK/css/style.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&amp;family=Roboto:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    {% endblock %}
+{% block extracss %}{% endblock %}
     <!--google fonts-->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700,300italic,400italic' rel='stylesheet'
@@ -134,7 +142,19 @@
 
                                         <div class="grid_2">
                                             <div class="nicdark_space5"></div>
-                                            <a href="#" class="nicdark_btn nicdark_bg_orange  right medium white">RÉSERVER</a>
+                                            <div class="grid_2">
+
+                                                <div class="row">
+
+                                                    <div class="col col-md-6">
+                                                        <a href="{{ path('materiel_new') }}" class="nicdark_btn nicdark_bg_blue  right medium white">VENDRE</a>
+                                                    </div>
+                                                    <div class="col col-md-6">
+                                                        <a href="{{ path('index_c') }}" class="nicdark_btn nicdark_bg_green right medium white">PANIER</a>
+                                                    </div>
+                                                </div>
+
+                                            </div>
                                             <div class="nicdark_space5"></div>
                                         </div>
 
@@ -184,16 +204,14 @@
                                             <ul class="nicdark_menu nicdark_margin010 nicdark_padding50">
 
                                                 <li class="greydark">
-                                                    <a href="{{ path('accueil') }}">Accueil</a>
-                                                </li>
-                                                <li class="greydark">
                                                     <a href="{{ path('evenement_index') }}">Événements</a>
                                                 </li>
 
                                                 <li class="greydark">
-                                                    <a href="/ajoutertransportuser">Transport</a>
+                                                    <a href="/affichertransportfront">Transport</a>
                                                     <ul class="sub-menu">
                                                         <li><a href="/affichercategorieuser ">Categorie</a></li>
+                                                        <li><a href="/ajoutertransportuser ">Covoiturage</a></li>
                                                         {#   <li>
                                                         <a href="#">Covoiturage</a>
                                                         <ul class="sub-menu">
@@ -205,19 +223,26 @@
                                                     </ul>
                                                 </li>
                                                 <li class="greydark">
-                                                    <a class="" href="">Restaurant</a>
-                                                </li>
-                                                <li class="greydark nicdark_megamenu">
-                                                    <a href=" ">Magasin</a>
-
+                                                    <a class="" href="{{ path('afficherregionUser') }}">Restaurant</a>
                                                 </li>
                                                 <li class="greydark">
-                                                    <a href=" ">Contacts</a>
+                                                    <a href="{{ path('list-materiel') }}">Magasin</a>
+
                                                 </li>
+
+
                                             </ul>
                                         </nav>
+                                        <div class="nicdark_space20">
 
-                                        <div class="nicdark_space20"></div>
+                                            {% for message in app.flashes('success') %}
+                                                <div class="alert alert-success">
+                                                    {{ message }}
+                                                </div>
+                                            {% endfor %}
+
+                                        </div>
+
 
                                     </div>
 
@@ -231,6 +256,8 @@
                 </div>
 
             </div>
+
+
             <!--end header-->
         {% endblock %}
 
@@ -244,9 +271,9 @@
 
         </div>
 
-        <div class="nicdark_space30"></div>
 
         <div class="nicdark_space50"></div>
+
         {% block body %}
 
         {% endblock %}
@@ -616,6 +643,7 @@
     </script>
     <!--google analytics-->
 {% endblock %}
-
+{% block extraJS%}
+{% endblock %}
 </body>
 </html>
